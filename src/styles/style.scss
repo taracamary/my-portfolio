@@ -1,0 +1,16 @@
+// Глобальные конфигурации и сброс
+@import 'config';
+@import 'reset';
+
+// Компоненты и раскладка
+@import '../components/buttons';
+@import '../layout/header';
+@import '../layout/footer';
+
+// Секции страницы
+@import '../sections/hero';
+@import '../sections/about';
+@import '../sections/tech-stack';
+@import '../sections/projects';
+@import '../sections/experience';
+@import '../sections/contact';
