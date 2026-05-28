@@ -1,16 +1,11 @@
-// Глобальные конфигурации и сброс
-@import 'config';
-@import 'reset';
-
-// Компоненты и раскладка
-@import '../components/buttons';
-@import '../layout/header';
-@import '../layout/footer';
-
-// Секции страницы
-@import '../sections/hero';
-@import '../sections/about';
-@import '../sections/tech-stack';
-@import '../sections/projects';
-@import '../sections/experience';
-@import '../sections/contact';
+@use "config";
+@use "reset";
+@use "../components/buttons";
+@use "../layout/header";
+@use "../layout/footer";
+@use "../sections/hero";
+@use "../sections/about";
+@use "../sections/tech-stack";
+@use "../sections/projects";
+@use "../sections/experience";
+@use "../sections/contact";

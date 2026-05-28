@@ -1,67 +1,61 @@
-// ==========================================================================
-// Кроссбраузерный Reset & Нормализация
-// ==========================================================================
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-// Защита от багов скролла на iOS Safari
 html {
   scroll-behavior: smooth;
-  text-size-adjust: 100%; // Запрещает iOS менять размер шрифта при смене ориентации
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-primary);
   min-height: 100vh;
-  // Сглаживание шрифтов для macOS/iOS и Windows
+  overflow-x: hidden;
+  background-color: var(--color-bg-dark);
+  font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; // Исключаем горизонтальный скролл
   line-height: 1.5;
+  color: var(--color-text-primary);
 }
 
-// Убираем дефолтные маркеры списков
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
-// Кроссбраузерная адаптивность изображений
-img, svg {
+img,
+svg {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-// Сброс для интерактивных элементов
 a {
+  display: inline-block;
   text-decoration: none;
   color: inherit;
-  display: inline-block;
   transition: color var(--transition-fast);
 }
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
+  outline: none;
+  border: none;
+  background: none;
   font-family: inherit;
   font-size: inherit;
-  background: none;
-  border: none;
-  outline: none;
 }
 
 button {
   cursor: pointer;
 }
 
-// Стилизация скроллбара (для Chrome, Edge, Safari)
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -71,9 +65,9 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
   border-radius: var(--radius-sm);
-  
+  background: var(--color-border);
+
   &:hover {
     background: var(--color-border-hover);
   }
