@@ -15,7 +15,7 @@
 
   &--scrolled {
     border-bottom-color: var(--color-border);
-    background-color: rgb(10 10 12 / 80%);
+    background-color: hsl(240deg 9% 4% / 80%);
     backdrop-filter: blur(12px);
   }
 
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: var(--breakpoints-desktop-lg);
+    max-width: 1440px;
     margin: 0 auto;
     padding: 1.25rem 1.5rem;
 
@@ -39,7 +39,7 @@
     letter-spacing: -0.05em;
 
     &-accent {
-      color: var(--color-accent);
+      color: var(--color-primary);
     }
   }
 
@@ -61,7 +61,7 @@
     width: 100%;
     height: 100vh;
     padding: 2rem;
-    background-color: rgb(10 10 12 / 95%);
+    background-color: hsl(240deg 9% 4% / 95%);
     transition: right var(--transition-normal);
     backdrop-filter: blur(16px);
 
@@ -179,29 +179,8 @@
       border-color var(--transition-fast);
 
     &:hover {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
-    }
-  }
-
-  &__burger {
-    position: relative;
-    display: block;
-    width: 24px;
-    height: 24px;
-
-    @include respond-to("tablet") {
-      display: none;
-    }
-
-    &-line {
-      position: absolute;
-      top: 50%;
-      display: block;
-      width: 100%;
-      height: 2px;
-      background-color: var(--color-text-primary);
-      transform: translateY(-50%);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
 }

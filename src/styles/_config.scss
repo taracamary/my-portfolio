@@ -4,21 +4,41 @@
   --font-main:
     "Inter", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, helvetica,
     arial, sans-serif;
-  --color-bg-dark: hsl(240deg 9% 4%);
+  --color-background: hsl(240deg 9% 4%);
   --color-bg-card: hsl(240deg 10% 8%);
   --color-border: rgb(255 255 255 / 8%);
   --color-border-hover: rgb(255 255 255 / 16%);
   --color-text-primary: hsl(220deg 14% 96%);
   --color-text-muted: hsl(218deg 11% 65%);
-  --color-accent: hsl(160deg 84% 39%);
-  --color-accent-hover: hsl(161deg 94% 30%);
-  --color-accent-glow: rgb(16 185 129 / 15%);
+  --color-primary: hsl(160deg 84% 39%);
+  --color-primary-hover: hsl(161deg 94% 30%);
+  --color-primary-glow: rgb(16 185 129 / 15%);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+$font-main: var(--font-main);
+$color-background: var(--color-background);
+$color-bg-card: var(--color-bg-card);
+$color-border: var(--color-border);
+$color-border-hover: var(--color-border-hover);
+$color-text-primary: var(--color-text-primary);
+$color-text-muted: var(--color-text-muted);
+
+$color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
+$color-primary-glow: var(--color-primary-glow);
+$color-accent: var(--color-primary);
+
+$radius-sm: var(--radius-sm);
+$radius-md: var(--radius-md);
+$radius-lg: var(--radius-lg);
+
+$transition-fast: var(--transition-fast);
+$transition-normal: var(--transition-normal);
 
 $breakpoints: (
   "mobile-sm": 375px,
