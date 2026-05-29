@@ -201,6 +201,8 @@
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
+    filter: sepia(0.1) saturate(0.9) brightness(1.05);
+    border: 1px solid rgba(218, 165, 32, 0.2);
   }
 
   &__badge {

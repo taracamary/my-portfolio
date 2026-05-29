@@ -4,15 +4,20 @@
   --font-main:
     "Inter", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, helvetica,
     arial, sans-serif;
-  --color-background: hsl(240deg 9% 4%);
-  --color-bg-card: hsl(240deg 10% 8%);
-  --color-border: rgb(255 255 255 / 8%);
-  --color-border-hover: rgb(255 255 255 / 16%);
-  --color-text-primary: hsl(220deg 14% 96%);
-  --color-text-muted: hsl(218deg 11% 65%);
-  --color-primary: hsl(160deg 84% 39%);
-  --color-primary-hover: hsl(161deg 94% 30%);
-  --color-primary-glow: rgb(16 185 129 / 15%);
+
+  --color-background: hsl(30deg 10% 4%);
+  --color-bg-card: hsl(30deg 8% 8%);
+
+  --color-border: rgb(255 255 255 / 10%);
+  --color-border-hover: rgb(255 255 255 / 20%);
+
+  --color-text-primary: hsl(40deg 10% 95%);
+  --color-text-muted: hsl(35deg 10% 65%);
+
+  --color-primary: hsl(38deg 65% 62%);
+  --color-primary-hover: hsl(38deg 75% 55%);
+  --color-primary-glow: rgb(218 165 32 / 12%);
+
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
