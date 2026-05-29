@@ -1,0 +1,31 @@
+@use "../styles/config" as *;
+
+.footer {
+  width: 100%;
+  padding: 2rem 0 4rem;
+  background-color: var(--color-background);
+
+  &__container {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-border) 50%, transparent);
+  }
+
+  &__copyright {
+    color: color-mix(in srgb, var(--color-text-muted) 60%, transparent);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+}
