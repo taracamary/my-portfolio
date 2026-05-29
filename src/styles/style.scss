@@ -1,11 +1,12 @@
-@use "config";
-@use "reset";
-@use "../components/buttons";
-@use "../layout/header";
-@use "../layout/footer";
-@use "../sections/hero";
-@use "../sections/about";
-@use "../sections/tech-stack";
-@use "../sections/projects";
-@use "../sections/experience";
-@use "../sections/contact";
+@use "base/reset";
+@use "base/config" as *;
+
+@use "ui/buttons";
+
+@use "../components/header/header";
+@use "../components/hero/hero";
+@use "../components/about/about";
+@use "../components/projects/projects";
+@use "../components/experience/experience";
+@use "../components/contact/contact";
+@use "../components/footer/footer";
