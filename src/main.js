@@ -46,4 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleScroll);
   // Вызываем один раз при загрузке, чтобы проверить начальное положение экрана
   handleScroll();
+
+  // Собираем список всех секций, за которыми нужно следить
+  const sections = Array.from(menuLinks)
+    .filter(link => link.getAttribute('href').length > 1)
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(section => section !== null);
+
+  // Настраиваем "датчик" наблюдения
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  };
+
+  // Создаем сам наблюдатель
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Если секция вошла в нашу "рабочую зону"
+      if (entry.isIntersecting) {
+        const activeId = entry.target.getAttribute('id');
+        // Проходим по всем ссылкам меню
+        menuLinks.forEach(link => {
+          // Убираем активный класс у всех ссылок
+          link.classList.remove('header__link--active');
+          // Добавляем его только той ссылке, чей href совпадает с ID секции
+          if (link.getAttribute('href') === `#${activeId}`) {
+            link.classList.add('header__link--active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  // Запускаем наблюдение за каждой найденной секцией
+  sections.forEach(section => observer.observe(section));
 });
