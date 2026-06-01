@@ -2,7 +2,7 @@
 
 .experience {
   position: relative;
-  padding: 8rem 0;
+  padding: rem(128) 0;
   overflow: hidden;
   background-color: $color-background;
 
@@ -18,32 +18,32 @@
   &__container {
     width: 100%;
     margin: 0 auto;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: var(--space-lg);
+    padding-left: var(--space-lg);
   }
 
   &__max-width {
-    max-width: 56rem;
+    max-width: rem(896);
     margin: 0 auto;
   }
 
   &__label {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-md);
     color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__title {
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-3xl);
     color: $color-text-primary;
-    font-family: var(--font-serif, $font-main);
-    font-size: 3rem;
+    font-family: $font-main;
+    font-size: var(--font-size-3xl);
 
     @include respond-to("tablet") {
-      font-size: 3.75rem;
+      font-size: var(--font-size-4xl);
     }
 
     &-italic {
@@ -65,39 +65,42 @@
     background-color: $color-border;
 
     @include respond-to("tablet") {
-      left: 1.5rem;
+      left: var(--space-lg);
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-xl);
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   &__item {
     position: relative;
-    padding-left: 2rem;
+    padding-left: var(--space-2xl);
 
     @include respond-to("tablet") {
-      padding-left: 5rem;
+      padding-left: rem(80);
     }
   }
 
   &__dot {
     position: absolute;
-    top: 2.25rem;
+    top: rem(36);
     left: 0;
     z-index: 2;
-    width: 0.625rem;
-    height: 0.625rem;
+    width: rem(10);
+    height: rem(10);
     border-radius: $radius-full;
     background-color: $color-primary;
     transform: translateX(-50%);
     box-shadow: 0 0 0 4px $color-background;
 
     @include respond-to("tablet") {
-      left: 1.5rem;
+      left: var(--space-lg);
     }
   }
 
@@ -109,12 +112,12 @@
     height: 100%;
     border-radius: $radius-full;
     background-color: $color-primary;
-    animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse-slow 2s $ease-main infinite;
     transform: scale(1);
   }
 
   &__card {
-    padding: 1.5rem;
+    padding: var(--space-lg);
     border: 1px solid $color-border;
     border-radius: $radius-md;
     background-color: $color-bg-card;
@@ -128,24 +131,24 @@
 
     &:hover {
       border-color: $color-primary;
-      box-shadow: 0 12px 30px $color-primary-glow;
+      box-shadow: 0 rem(12) rem(30) $color-primary-glow;
     }
   }
 
   &__period {
     color: color-mix(in srgb, $color-primary 70%, transparent);
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
   &__role {
-    margin-top: 0.5rem;
-    margin-bottom: 0.125rem;
+    margin-top: var(--space-xs);
+    margin-bottom: rem(2);
     color: $color-text-primary;
-    font-size: 1.125rem;
-    font-weight: 500;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
     transition: color $transition-fast;
 
     .experience__card:hover & {
@@ -154,9 +157,9 @@
   }
 
   &__company {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-md);
     color: $color-text-muted;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     transition: color $transition-fast;
 
     .experience__card:hover & {
@@ -165,15 +168,15 @@
   }
 
   &__bullets {
-    margin-bottom: 1.25rem;
-    padding-left: 1.25rem;
+    margin-bottom: rem(20);
+    padding-left: var(--space-md);
     list-style-type: disc;
 
     li {
-      margin-bottom: 0.5rem;
+      margin-bottom: var(--space-xs);
       color: $color-text-muted;
-      font-size: 0.875rem;
-      line-height: 1.625;
+      font-size: var(--font-size-sm);
+      line-height: var(--line-height-base);
       transition: color $transition-fast;
 
       &:last-child {
@@ -189,24 +192,24 @@
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-xs);
   }
 
   &__tag {
     display: inline-flex;
-    padding: 0.25rem 0.75rem;
+    padding: var(--space-2xs) var(--space-sm);
     border: 1px solid $color-border;
     border-radius: $radius-full;
     background-color: color-mix(in srgb, $color-text-primary 2%, transparent);
     color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
   }
 
   &__animate-fade-up {
     opacity: 0;
-    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform: translateY(20px);
+    animation: fadeUp 0.6s $ease-main forwards;
+    transform: translateY(rem(20));
   }
 
   &__delay-100 {
@@ -238,5 +241,12 @@
   50% {
     opacity: 0;
     transform: scale(2.5);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

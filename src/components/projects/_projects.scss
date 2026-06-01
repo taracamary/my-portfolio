@@ -2,7 +2,7 @@
 
 .projects {
   position: relative;
-  padding: 8rem 0;
+  padding: rem(128) 0;
   overflow: hidden;
   background-color: $color-background;
 
@@ -18,12 +18,12 @@
   &__container {
     width: 100%;
     margin: 0 auto;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: var(--space-lg);
+    padding-left: var(--space-lg);
   }
 
   &__max-width {
-    max-width: 72rem;
+    max-width: rem(1152);
     margin: 0 auto;
   }
 
@@ -31,25 +31,25 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-3xl);
   }
 
   &__label {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-md);
     color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__title {
     color: $color-text-primary;
-    font-family: var(--font-serif, $font-main);
-    font-size: 3rem;
+    font-family: $font-main;
+    font-size: var(--font-size-3xl);
 
     @include respond-to("tablet") {
-      font-size: 3.75rem;
+      font-size: var(--font-size-4xl);
     }
 
     &-italic {
@@ -61,15 +61,15 @@
   &__all-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     color: $color-text-muted;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     text-decoration: none;
     transition: color $transition-fast;
 
     svg {
-      width: 1rem;
-      height: 1rem;
+      width: rem(16);
+      height: rem(16);
       transition: transform $transition-fast;
     }
 
@@ -77,7 +77,7 @@
       color: $color-primary;
 
       svg {
-        transform: translateX(4px);
+        transform: translateX(rem(4));
       }
     }
 
@@ -92,7 +92,7 @@
 
   &__grid {
     display: grid;
-    gap: 1.5rem;
+    gap: var(--space-lg);
 
     @include respond-to("tablet") {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -111,14 +111,14 @@
       border-color $transition-fast,
       transform $transition-normal,
       box-shadow $transition-normal;
-    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform: translateY(20px);
+    animation: fadeUp 0.6s $ease-main forwards;
+    transform: translateY(rem(20));
     will-change: transform, border-color, box-shadow;
 
     &:hover {
       border-color: $color-border-hover;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px $color-primary-glow;
+      transform: translateY(rem(-4));
+      box-shadow: 0 rem(12) rem(30) $color-primary-glow;
     }
   }
 
@@ -133,7 +133,7 @@
     height: 100%;
     object-fit: cover;
     will-change: transform;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.7s $ease-main;
   }
 
   &__overlay {
@@ -142,7 +142,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--space-sm);
     background-color: rgb(0 0 0 / 45%);
     visibility: hidden;
     opacity: 0;
@@ -160,8 +160,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: rem(44);
+    height: rem(44);
     border: 1px solid $color-border;
     border-radius: $radius-full;
     background-color: $color-bg-card;
@@ -173,8 +173,8 @@
       transform $transition-fast;
 
     svg {
-      width: 1rem;
-      height: 1rem;
+      width: rem(16);
+      height: rem(16);
     }
 
     &:hover {
@@ -186,8 +186,8 @@
   &__meta {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.5rem;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
   }
 
   &__title-row {
@@ -198,8 +198,8 @@
 
   &__card-title {
     color: $color-text-primary;
-    font-size: 1.125rem;
-    font-weight: 500;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
     transition: color $transition-fast;
 
     .projects__card:hover & {
@@ -214,8 +214,8 @@
       transform $transition-fast;
 
     svg {
-      width: 1rem;
-      height: 1rem;
+      width: rem(16);
+      height: rem(16);
       transition: transform $transition-fast;
     }
 
@@ -224,14 +224,14 @@
     }
 
     .projects__card:hover & svg {
-      transform: translate(2px, -2px);
+      transform: translate(rem(2), rem(-2));
     }
   }
 
   &__card-description {
     color: $color-text-muted;
-    font-size: 0.875rem;
-    line-height: 1.625;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
     transition: color $transition-fast;
 
     .projects__card:hover & {
@@ -242,23 +242,23 @@
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    padding-top: 0.25rem;
+    gap: var(--space-xs);
+    padding-top: var(--space-2xs);
   }
 
   &__tag {
     display: inline-flex;
-    padding: 0.25rem 0.75rem;
+    padding: var(--space-2xs) var(--space-sm);
     border: 1px solid $color-border;
     border-radius: $radius-full;
     background-color: color-mix(in srgb, $color-text-primary 2%, transparent);
     color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
   }
 
   &__footer {
-    margin-top: 2.5rem;
+    margin-top: rem(40);
     text-align: center;
 
     @include respond-to("tablet") {
@@ -268,8 +268,8 @@
 
   &__animate-fade-up {
     opacity: 0;
-    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform: translateY(20px);
+    animation: fadeUp 0.6s $ease-main forwards;
+    transform: translateY(rem(20));
   }
 
   &__delay-100 {
@@ -283,5 +283,12 @@
   }
   &__delay-400 {
     animation-delay: 400ms;
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

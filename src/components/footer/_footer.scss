@@ -2,29 +2,28 @@
 
 .footer {
   width: 100%;
-  padding: 2rem 0 4rem;
-  background-color: var(--color-background);
+  padding: var(--space-xl) 0 var(--space-3xl);
+  background-color: $color-background;
 
   &__container {
     width: 100%;
     margin: 0 auto;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: var(--space-lg);
+    padding-left: var(--space-lg);
   }
 
   &__content {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
-    border-top: 1px solid
-      color-mix(in srgb, var(--color-border) 50%, transparent);
+    padding-top: var(--space-xl);
+    border-top: 1px solid color-mix(in srgb, $color-border 50%, transparent);
   }
 
   &__copyright {
-    color: color-mix(in srgb, var(--color-text-muted) 60%, transparent);
-    font-size: 0.75rem;
-    font-weight: 400;
+    color: color-mix(in srgb, $color-text-muted 60%, transparent);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
     letter-spacing: 0.05em;
     text-align: center;
   }

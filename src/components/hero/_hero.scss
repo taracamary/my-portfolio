@@ -14,7 +14,7 @@
     background-image:
       linear-gradient($color-text-primary 1px, transparent 1px),
       linear-gradient(90deg, $color-text-primary 1px, transparent 1px);
-    background-size: 80px 80px;
+    background-size: rem(80) rem(80);
     opacity: 0.03;
   }
 
@@ -22,12 +22,12 @@
     position: absolute;
     top: 33.333%;
     left: 25%;
-    width: 24rem;
-    height: 24rem;
+    width: rem(384);
+    height: rem(384);
     border-radius: $radius-full;
     background-color: $color-primary;
     opacity: 0.08;
-    filter: blur(120px);
+    filter: blur(rem(120));
     pointer-events: none;
   }
 
@@ -35,57 +35,54 @@
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1440px;
+    max-width: rem(1440);
     margin: 0 auto;
-    padding: 7rem 1.5rem 5rem;
+    padding: rem(112) rem(24) rem(80);
 
     @include respond-to("tablet") {
-      padding-right: 2.5rem;
-      padding-left: 2.5rem;
+      padding-right: rem(40);
+      padding-left: rem(40);
     }
   }
 
   &__grid {
     display: grid;
     align-items: center;
-    gap: 4rem;
+    gap: rem(64);
 
     @include respond-to("desktop") {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: rem(64);
     }
   }
 
   &__left {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-xl);
   }
 
   &__label {
     color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     letter-spacing: 0.1em;
     text-transform: uppercase;
 
     &--center {
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-md);
       text-align: center;
     }
   }
 
   &__title {
     color: $color-text-primary;
-    font-family: var(--font-serif, $font-main);
-    font-size: 3.75rem;
-    line-height: 0.95;
+    font-family: $font-main;
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
 
     @include respond-to("tablet") {
-      font-size: 4.5rem;
-    }
-
-    @include respond-to("desktop") {
-      font-size: 5rem;
+      font-size: var(--font-size-4xl);
     }
 
     &-italic {
@@ -95,27 +92,27 @@
   }
 
   &__description {
-    max-width: 28rem;
+    max-width: rem(448);
     color: $color-text-muted;
-    font-size: 1.125rem;
-    line-height: 1.625;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-base);
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-md);
     flex-wrap: wrap;
   }
 
   &__btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-xl);
     border-radius: $radius-full;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
     text-decoration: none;
     cursor: pointer;
     transition: all $transition-fast;
@@ -124,12 +121,12 @@
       border: 1px solid $color-primary;
       background-color: $color-primary;
       color: $color-background;
-      font-weight: 600;
+      font-weight: var(--font-weight-bold);
 
       &:hover {
         border-color: $color-primary-hover;
         background-color: $color-primary-hover;
-        box-shadow: 0 4px 15px $color-primary-glow;
+        box-shadow: 0 rem(4) rem(15) $color-primary-glow;
       }
 
       &:hover .hero__btn-icon {
@@ -149,20 +146,20 @@
     }
 
     &-icon {
-      width: 1rem;
-      height: 1rem;
+      width: rem(16);
+      height: rem(16);
       transition: transform $transition-fast;
     }
   }
 
   &__socials {
     display: flex;
-    gap: 0.75rem;
+    gap: var(--space-sm);
   }
 
   &__social-link {
     display: inline-flex;
-    padding: 0.625rem;
+    padding: var(--space-sm);
     border: 1px solid $color-border;
     border-radius: $radius-full;
     color: $color-text-muted;
@@ -176,8 +173,8 @@
   }
 
   &__social-icon {
-    width: 1rem;
-    height: 1rem;
+    width: rem(16);
+    height: rem(16);
   }
 
   &__right {
@@ -191,19 +188,19 @@
 
   &__profile-wrapper {
     position: relative;
-    width: 18rem;
+    width: rem(288);
 
     @include respond-to("tablet") {
-      width: 20rem;
+      width: rem(320);
     }
   }
 
   &__profile-blur {
     position: absolute;
     inset: -1rem;
-    border-radius: 1.5rem;
-    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
-    filter: blur(24px);
+    border-radius: rem(24);
+    background-color: color-mix(in srgb, $color-primary 10%, transparent);
+    filter: blur(rem(24));
   }
 
   &__profile-card {
@@ -235,27 +232,27 @@
     position: absolute;
     right: -1rem;
     bottom: -1rem;
-    padding: 0.75rem 1rem;
+    padding: var(--space-sm) var(--space-md);
     border: 1px solid $color-border;
     border-radius: $radius-sm;
     background-color: $color-bg-card;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 rem(10) rem(15) -3px rgba(0, 0, 0, 0.1);
 
     &-text {
       color: $color-primary;
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
     }
   }
 
   &__marquee-section {
-    margin-top: 5rem;
+    margin-top: rem(80);
   }
 
   &__divider {
     width: 100%;
     height: 1px;
-    margin-bottom: 2rem;
+    margin-bottom: rem(32);
     background-color: $color-border;
   }
 
@@ -272,10 +269,10 @@
     animation: marquee 30s linear infinite;
 
     span {
-      padding: 0.5rem 2rem;
-      color: color-mix(in srgb, var(--color-text-muted) 40%, transparent);
-      font-size: 0.875rem;
-      font-weight: 500;
+      padding: var(--space-xs) var(--space-xl);
+      color: color-mix(in srgb, $color-text-muted 40%, transparent);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
       letter-spacing: 0.05em;
       flex-shrink: 0;
       transition: color $transition-fast;
@@ -288,12 +285,12 @@
 
   &__scroll-down {
     position: absolute;
-    bottom: 2rem;
+    bottom: rem(32);
     left: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    gap: var(--space-2xs);
     color: $color-text-muted;
     transition: color $transition-fast;
     transform: translateX(-50%);
@@ -304,15 +301,15 @@
   }
 
   &__scroll-icon {
-    width: 1rem;
-    height: 1rem;
+    width: rem(16);
+    height: rem(16);
     animation: bounce 1s infinite;
   }
 
   &__animate-fade-up {
     opacity: 0;
-    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform: translateY(20px);
+    animation: fadeUp 0.6s $ease-main forwards;
+    transform: translateY(rem(20));
   }
 
   &__animate-float {
@@ -344,30 +341,27 @@
     transform: translateX(-50%);
   }
 }
-
 @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @keyframes float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(rem(-10));
   }
 }
-
 @keyframes bounce {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(4px);
+    transform: translateY(rem(4));
   }
 }

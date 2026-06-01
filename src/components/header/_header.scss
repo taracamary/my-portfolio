@@ -2,11 +2,10 @@
 
 .header {
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 100;
-  border-bottom: 1px solid transparent;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-header);
+  border-block-end: rem(1) solid transparent;
   background-color: transparent;
   transition:
     background-color $transition-normal,
@@ -14,27 +13,29 @@
     backdrop-filter $transition-normal;
 
   &--scrolled {
-    border-bottom-color: $color-border;
+    border-block-end-color: $color-border;
     background-color: color-mix(in srgb, $color-background 80%, transparent);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(rem(12));
   }
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 1.25rem 1.5rem;
+    max-inline-size: rem(1440);
+    margin-inline: auto;
+    padding-block: rem(20);
+    padding-inline: rem(24);
 
     @include respond-to("tablet") {
-      padding: 1.5rem 3rem;
+      padding-block: rem(24);
+      padding-inline: rem(48);
     }
   }
 
   &__logo {
     color: $color-text-primary;
-    font-size: 1.25rem;
+    font-size: rem(20);
     font-weight: 700;
     letter-spacing: -0.05em;
     text-decoration: none;
@@ -51,33 +52,33 @@
 
   &__menu {
     position: fixed;
-    top: 0;
-    right: -100%;
+    inset-block-start: 0;
+    inset-inline-end: -100%;
     z-index: -1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    width: 100%;
-    height: 100vh;
-    padding: 2rem;
+    gap: rem(32);
+    inline-size: 100%;
+    block-size: 100vh;
+    padding: rem(32);
     background-color: color-mix(in srgb, $color-background 95%, transparent);
-    transition: right $transition-normal;
-    backdrop-filter: blur(16px);
-    will-change: right;
+    transition: inset-inline-end $transition-normal;
+    backdrop-filter: blur(rem(16));
+    will-change: inset-inline-end;
 
     &--open {
-      right: 0;
+      inset-inline-end: 0;
     }
 
     @include respond-to("tablet") {
       position: static;
       z-index: auto;
       flex-direction: row;
-      gap: 0.5rem;
-      width: auto;
-      height: auto;
+      gap: rem(8);
+      inline-size: auto;
+      block-size: auto;
       padding: 0;
       background-color: transparent;
       transition: none;
@@ -90,8 +91,8 @@
     position: relative;
     z-index: 101;
     display: block;
-    width: 24px;
-    height: 24px;
+    inline-size: rem(24);
+    block-size: rem(24);
     border: none;
     background: transparent;
     cursor: pointer;
@@ -102,11 +103,11 @@
 
     &-line {
       position: absolute;
-      top: 50%;
-      left: 0;
+      inset-block-start: 50%;
+      inset-inline-start: 0;
       display: block;
-      width: 100%;
-      height: 2px;
+      inline-size: 100%;
+      block-size: rem(2);
       background-color: $color-text-primary;
       transition:
         transform $transition-fast,
@@ -116,21 +117,21 @@
       &::before,
       &::after {
         position: absolute;
-        left: 0;
-        width: 100%;
-        height: 2px;
+        inset-inline-start: 0;
+        inline-size: 100%;
+        block-size: rem(2);
         background-color: $color-text-primary;
         transition:
           transform $transition-fast,
-          top $transition-fast;
+          inset-block-start $transition-fast;
         content: "";
       }
 
       &::before {
-        top: -8px;
+        inset-block-start: rem(-8);
       }
       &::after {
-        top: 8px;
+        inset-block-start: rem(8);
       }
     }
 
@@ -139,12 +140,12 @@
         background-color: transparent;
 
         &::before {
-          top: 0;
+          inset-block-start: 0;
           transform: rotate(45deg);
         }
 
         &::after {
-          top: 0;
+          inset-block-start: 0;
           transform: rotate(-45deg);
         }
       }
@@ -152,10 +153,10 @@
   }
 
   &__link {
-    padding: 0.5rem 1rem;
+    padding: rem(8) rem(16);
     border-radius: $radius-lg;
     color: $color-text-muted;
-    font-size: 0.875rem;
+    font-size: rem(14);
     font-weight: 500;
     text-decoration: none;
     transition:
@@ -174,11 +175,11 @@
   }
 
   &__cta {
-    padding: 0.5rem 1.25rem;
-    border: 1px solid $color-border;
+    padding: rem(8) rem(20);
+    border: rem(1) solid $color-border;
     border-radius: $radius-lg;
     color: $color-text-primary;
-    font-size: 0.875rem;
+    font-size: rem(14);
     font-weight: 500;
     text-decoration: none;
     will-change: transform, box-shadow;
@@ -192,7 +193,7 @@
       border-color: $color-primary;
       background-color: color-mix(in srgb, $color-primary 4%, transparent);
       color: $color-primary;
-      box-shadow: 0 4px 15px $color-primary-glow;
+      box-shadow: 0 rem(4) rem(15) $color-primary-glow;
     }
   }
 }

@@ -3,11 +3,13 @@
     <a href="#" class="header__logo">
       M<span class="header__logo-accent">A</span>
     </a>
-    <nav class="header__nav" aria-label="Главное меню">
-      <button class="header__burger" aria-expanded="false" aria-label="Открыть меню">
-        <span class="header__burger-line"></span>
+
+    <nav class="header__nav" aria-label="Main navigation">
+      <button class="header__burger" aria-expanded="false" aria-controls="main-menu" aria-label="Toggle menu">
+        <span class="header__burger-line" aria-hidden="true"></span>
       </button>
-      <ul class="header__menu">
+
+      <ul id="main-menu" class="header__menu">
         <li class="header__menu-item">
           <a href="#" class="header__link header__link--active">Home</a>
         </li>
@@ -25,6 +27,7 @@
         </li>
       </ul>
     </nav>
+
     <a href="#contact" class="header__cta">Hire me</a>
   </div>
 </header>

@@ -1,34 +1,127 @@
 @use "sass:map";
+@use "sass:math";
+
+// =========================
+// FUNCTIONS
+// =========================
+
+@function rem($px) {
+  @if math.is-unitless($px) {
+    $px: $px * 1px;
+  }
+  @return math.div($px, 16px) * 1rem;
+}
+
+@function em($px) {
+  @if math.is-unitless($px) {
+    $px: $px * 1px;
+  }
+  @return math.div($px, 16px) * 1em;
+}
+
+// =========================
+// ROOT TOKENS
+// =========================
 
 :root {
-  --font-main:
+  // --- Typography ---
+  --font-family-main:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 
-  --color-background: hsl(30deg 10% 4%);
-  --color-bg-card: hsl(30deg 8% 8%);
+  --font-size-xs: #{rem(12)};
+  --font-size-sm: #{rem(14)};
+  --font-size-base: #{rem(16)};
+  --font-size-lg: #{rem(18)};
+  --font-size-xl: #{rem(24)};
+  --font-size-2xl: #{rem(32)};
+  --font-size-3xl: #{rem(48)};
+  --font-size-4xl: #{rem(60)};
 
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.6;
+
+  // --- Spacing (8px grid system) ---
+  --space-2xs: #{rem(4)};
+  --space-xs: #{rem(8)};
+  --space-sm: #{rem(12)};
+  --space-md: #{rem(16)};
+  --space-lg: #{rem(24)};
+  --space-xl: #{rem(32)};
+  --space-2xl: #{rem(48)};
+  --space-3xl: #{rem(64)};
+
+  // --- Z-Index ---
+  --z-base: 0;
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-modal: 1000;
+  --z-toast: 2000;
+
+  // --- Motion ---
+  --ease-main: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s var(--ease-main);
+  --transition-normal: 0.6s var(--ease-main);
+
+  // --- Colors (Primitive) ---
+  --color-neutral-900: hsl(30deg 10% 4%);
+  --color-neutral-800: hsl(30deg 8% 8%);
+  --color-neutral-100: hsl(40deg 10% 95%);
+  --color-neutral-300: hsl(35deg 10% 65%);
+
+  --color-gold-500: hsl(38deg 65% 62%);
+  --color-gold-600: hsl(38deg 75% 55%);
+  --color-gold-glow: rgb(218 165 32 / 12%);
+
+  // --- Colors (Semantic) ---
+  --color-background: var(--color-neutral-900);
+  --color-bg-card: var(--color-neutral-800);
   --color-border: rgb(255 255 255 / 10%);
   --color-border-hover: rgb(255 255 255 / 20%);
+  --color-text-primary: var(--color-neutral-100);
+  --color-text-muted: var(--color-neutral-300);
 
-  --color-text-primary: hsl(40deg 10% 95%);
-  --color-text-muted: hsl(35deg 10% 65%);
+  --color-primary: var(--color-gold-500);
+  --color-primary-hover: var(--color-gold-600);
+  --color-primary-glow: var(--color-gold-glow);
+  --color-focus-ring: var(--color-gold-500);
 
-  --color-primary: hsl(38deg 65% 62%);
-  --color-primary-hover: hsl(38deg 75% 55%);
-  --color-primary-glow: rgb(218 165 32 / 12%);
-
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  // --- Radius ---
+  --radius-sm: #{rem(8)};
+  --radius-md: #{rem(12)};
+  --radius-lg: #{rem(20)};
   --radius-full: 9999px;
-
-  --ease-main: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: 0.2s var(--ease-main);
-  --transition-normal: 0.4s var(--ease-main);
 }
 
-$font-main: var(--font-main);
+// =========================
+// THEME HANDLING
+// =========================
+
+html[data-theme="light"] {
+  --color-background: hsl(40deg 10% 96%);
+  --color-bg-card: hsl(40deg 10% 100%);
+  --color-border: rgb(0 0 0 / 10%);
+  --color-border-hover: rgb(0 0 0 / 20%);
+  --color-text-primary: hsl(30deg 10% 4%);
+  --color-text-muted: hsl(30deg 5% 40%);
+
+  --color-primary: hsl(38deg 75% 45%);
+  --color-primary-hover: hsl(38deg 85% 38%);
+  --color-primary-glow: rgb(184 134 11 / 8%);
+
+  --color-focus-ring: var(--color-primary);
+}
+
+// =========================
+// SCSS PROXY VARIABLES
+// =========================
+
+$font-main: var(--font-family-main);
+
 $color-background: var(--color-background);
 $color-bg-card: var(--color-bg-card);
 $color-border: var(--color-border);
@@ -46,23 +139,29 @@ $radius-md: var(--radius-md);
 $radius-lg: var(--radius-lg);
 $radius-full: var(--radius-full);
 
+$ease-main: var(--ease-main);
 $transition-fast: var(--transition-fast);
 $transition-normal: var(--transition-normal);
 
+// =========================
+// BREAKPOINTS & MIXINS
+// =========================
+
 $breakpoints: (
-  "mobile-sm": 375px,
-  "mobile-lg": 480px,
-  "tablet": 768px,
-  "desktop": 1024px,
-  "desktop-lg": 1440px,
+  "mobile-lg": rem(480),
+  "tablet": rem(768),
+  "desktop": rem(1024),
+  "desktop-lg": rem(1440),
 );
 
 @mixin respond-to($breakpoint) {
-  @if map.has-key($breakpoints, $breakpoint) {
-    @media (min-width: map.get($breakpoints, $breakpoint)) {
+  $width: map.get($breakpoints, $breakpoint);
+
+  @if $width {
+    @media (min-width: $width) {
       @content;
     }
   } @else {
-    @warn "Указан неизвестный брейкпоинт: '#{$breakpoint}'. Доступные варианты: #{map.keys($breakpoints)}";
+    @error "Недопустимый брейкпоинт: #{$breakpoint}.";
   }
 }

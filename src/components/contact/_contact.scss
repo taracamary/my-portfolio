@@ -2,7 +2,7 @@
 
 .contact {
   position: relative;
-  padding: 8rem 0 4rem;
+  padding: rem(128) 0 rem(64);
   overflow: hidden;
   background-color: $color-background;
 
@@ -18,34 +18,34 @@
   &__container {
     width: 100%;
     margin: 0 auto;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-right: var(--space-lg);
+    padding-left: var(--space-lg);
   }
 
   &__max-width {
-    max-width: 48rem;
+    max-width: rem(768);
     margin: 0 auto;
     text-align: center;
   }
 
   &__label {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-lg);
     color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__title {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
     color: $color-text-primary;
-    font-family: var(--font-serif, $font-main);
-    font-size: 3rem;
-    line-height: 1.1;
+    font-family: $font-main;
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
 
     @include respond-to("tablet") {
-      font-size: 4rem;
+      font-size: var(--font-size-4xl);
     }
 
     &-italic {
@@ -55,24 +55,24 @@
   }
 
   &__description {
-    max-width: 32rem;
-    margin: 0 auto 3.5rem;
+    max-width: rem(512);
+    margin: 0 auto var(--space-2xl);
     color: $color-text-muted;
-    font-size: 1.125rem;
-    line-height: 1.625;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-base);
   }
 
   &__resume-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2.5rem;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
     border: 1px solid $color-border;
     border-radius: $radius-full;
     background-color: $color-bg-card;
     color: $color-text-primary;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
     text-decoration: none;
     will-change: transform, box-shadow;
 
@@ -83,23 +83,25 @@
       transform $transition-fast;
 
     svg {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: rem(20);
+      height: rem(20);
       transition: transform $transition-fast;
     }
 
     &:hover {
       border-color: $color-primary;
       color: $color-primary;
-      box-shadow: 0 8px 25px $color-primary-glow;
+      box-shadow: 0 rem(8) rem(25) $color-primary-glow;
     }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 5rem;
+    gap: var(--space-md);
+    margin-top: rem(80);
+    list-style: none;
+    padding: 0;
 
     @include respond-to("tablet") {
       grid-template-columns: repeat(4, 1fr);
@@ -111,8 +113,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1.5rem;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
     border: 1px solid $color-border;
     border-radius: $radius-md;
     background-color: $color-bg-card;
@@ -127,23 +129,23 @@
       box-shadow $transition-normal;
 
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: rem(24);
+      height: rem(24);
       transition:
         color $transition-fast,
         transform $transition-fast;
     }
 
     span {
-      font-size: 0.875rem;
-      font-weight: 500;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
       transition: color $transition-fast;
     }
 
     &:hover {
       border-color: $color-primary;
       color: $color-text-primary;
-      box-shadow: 0 12px 30px $color-primary-glow;
+      box-shadow: 0 rem(12) rem(30) $color-primary-glow;
 
       svg {
         color: $color-primary;
@@ -153,8 +155,8 @@
 
   &__animate-fade-up {
     opacity: 0;
-    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform: translateY(20px);
+    animation: fadeUp 0.6s $ease-main forwards;
+    transform: translateY(rem(20));
   }
 
   &__delay-100 {
@@ -162,5 +164,12 @@
   }
   &__delay-200 {
     animation-delay: 200ms;
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
