@@ -2,24 +2,12 @@
 
 .about {
   position: relative;
-  padding: rem(128) 0;
+  padding-block: rem(128);
   overflow: hidden;
   background-color: $color-background;
 
-  &__divider {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background-color: $color-border;
-  }
-
   &__container {
     width: 100%;
-    margin: 0 auto;
-    padding-right: var(--space-lg);
-    padding-left: var(--space-lg);
   }
 
   &__grid {
@@ -27,7 +15,7 @@
     align-items: start;
     gap: rem(80);
     max-width: rem(1152);
-    margin: 0 auto;
+    margin-inline: auto;
 
     @include respond-to("desktop") {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -37,14 +25,13 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
+    gap: rem(32);
   }
 
   &__label {
     color: $color-text-muted;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
@@ -67,7 +54,7 @@
   &__description {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: rem(16);
     color: $color-text-muted;
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
@@ -75,7 +62,7 @@
 
   &__highlights {
     display: grid;
-    gap: var(--space-md);
+    gap: rem(16);
 
     @include respond-to("tablet") {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -83,16 +70,14 @@
   }
 
   &__card {
-    padding: var(--space-lg);
-    border: 1px solid $color-border;
+    padding: rem(24);
+    border: rem(1) solid $color-border;
     border-radius: $radius-md;
     background-color: $color-bg-card;
-    cursor: pointer;
     transition:
       border-color $transition-fast,
       transform $transition-normal,
       box-shadow $transition-normal;
-    will-change: transform, box-shadow;
 
     &:hover {
       border-color: $color-primary;
@@ -107,7 +92,7 @@
     align-items: center;
     width: rem(40);
     height: rem(40);
-    margin-bottom: var(--space-md);
+    margin-bottom: rem(16);
     border-radius: $radius-sm;
     background-color: color-mix(in srgb, $color-primary 10%, transparent);
   }
@@ -119,7 +104,7 @@
   }
 
   &__card-title {
-    margin-bottom: var(--space-2xs);
+    margin-bottom: rem(4);
     color: $color-text-primary;
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
@@ -130,30 +115,7 @@
     font-size: var(--font-size-sm);
     line-height: var(--line-height-base);
   }
-
-  &__animate-fade-up {
-    opacity: 0;
-    animation: fadeUp 0.6s $ease-main forwards;
-    transform: translateY(rem(20));
-  }
-
-  &__delay-100 {
-    animation-delay: 100ms;
-  }
-  &__delay-200 {
-    animation-delay: 200ms;
-  }
-  &__delay-300 {
-    animation-delay: 300ms;
-  }
-  &__delay-400 {
-    animation-delay: 400ms;
-  }
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+// Global/Utility Animations Note:
+// @keyframes fadeUp переносим в глобальный файл styles/base/_animations.scss

@@ -2,42 +2,29 @@
 
 .experience {
   position: relative;
-  padding: rem(128) 0;
+  padding-block: rem(128);
   overflow: hidden;
   background-color: $color-background;
 
-  &__divider {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background-color: $color-border;
-  }
-
   &__container {
-    width: 100%;
-    margin: 0 auto;
-    padding-right: var(--space-lg);
-    padding-left: var(--space-lg);
+    inline-size: 100%;
   }
 
   &__max-width {
-    max-width: rem(896);
-    margin: 0 auto;
+    max-inline-size: rem(896);
+    margin-inline: auto;
   }
 
   &__label {
-    margin-bottom: var(--space-md);
+    margin-block-end: rem(16);
     color: $color-text-muted;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__title {
-    margin-bottom: var(--space-3xl);
+    margin-block-end: rem(64);
     color: $color-text-primary;
     font-family: $font-main;
     font-size: var(--font-size-3xl);
@@ -58,21 +45,20 @@
 
   &__line {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 1px;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: rem(1);
     background-color: $color-border;
 
     @include respond-to("tablet") {
-      left: var(--space-lg);
+      inset-inline-start: rem(24);
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
+    gap: rem(32);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -80,49 +66,48 @@
 
   &__item {
     position: relative;
-    padding-left: var(--space-2xl);
+    padding-inline-start: rem(48);
 
     @include respond-to("tablet") {
-      padding-left: rem(80);
+      padding-inline-start: rem(80);
     }
   }
 
   &__dot {
     position: absolute;
-    top: rem(36);
-    left: 0;
+    inset-block-start: rem(34);
+    inset-inline-start: 0;
     z-index: 2;
-    width: rem(10);
-    height: rem(10);
+    inline-size: rem(10);
+    block-size: rem(10);
     border-radius: $radius-full;
     background-color: $color-primary;
     transform: translateX(-50%);
-    box-shadow: 0 0 0 4px $color-background;
+    box-shadow: 0 0 0 rem(4) $color-background;
 
     @include respond-to("tablet") {
-      left: var(--space-lg);
+      inset-inline-start: rem(24);
     }
   }
 
   &__pulse {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
+    block-size: 100%;
     border-radius: $radius-full;
     background-color: $color-primary;
     animation: pulse-slow 2s $ease-main infinite;
-    transform: scale(1);
+    transform-origin: center; // Гарантирует расширение строго из центра точки
   }
 
   &__card {
-    padding: var(--space-lg);
-    border: 1px solid $color-border;
+    padding: rem(24);
+    border: rem(1) solid $color-border;
     border-radius: $radius-md;
     background-color: $color-bg-card;
     cursor: pointer;
-
     transition:
       border-color $transition-fast,
       transform $transition-normal,
@@ -139,13 +124,12 @@
     color: color-mix(in srgb, $color-primary 70%, transparent);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
   &__role {
-    margin-top: var(--space-xs);
-    margin-bottom: rem(2);
+    margin-block-start: rem(8);
+    margin-block-end: rem(2);
     color: $color-text-primary;
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-medium);
@@ -157,7 +141,7 @@
   }
 
   &__company {
-    margin-bottom: var(--space-md);
+    margin-block-end: rem(16);
     color: $color-text-muted;
     font-size: var(--font-size-sm);
     transition: color $transition-fast;
@@ -168,19 +152,19 @@
   }
 
   &__bullets {
-    margin-bottom: rem(20);
-    padding-left: var(--space-md);
+    margin-block-end: rem(20);
+    padding-inline-start: rem(16);
     list-style-type: disc;
 
     li {
-      margin-bottom: var(--space-xs);
+      margin-block-end: rem(8);
       color: $color-text-muted;
       font-size: var(--font-size-sm);
       line-height: var(--line-height-base);
       transition: color $transition-fast;
 
       &:last-child {
-        margin-bottom: 0;
+        margin-block-end: 0;
       }
 
       .experience__card:hover & {
@@ -192,13 +176,13 @@
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
+    gap: rem(8);
   }
 
   &__tag {
     display: inline-flex;
-    padding: var(--space-2xs) var(--space-sm);
-    border: 1px solid $color-border;
+    padding: rem(4) rem(12);
+    border: rem(1) solid $color-border;
     border-radius: $radius-full;
     background-color: color-mix(in srgb, $color-text-primary 2%, transparent);
     color: $color-text-muted;
@@ -235,7 +219,7 @@
 @keyframes pulse-slow {
   0%,
   100% {
-    opacity: 0.5;
+    opacity: 0.4;
     transform: scale(1);
   }
   50% {

@@ -29,14 +29,17 @@
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 
+  // Static sizes (for components where predictability is key)
   --font-size-xs: #{rem(12)};
   --font-size-sm: #{rem(14)};
   --font-size-base: #{rem(16)};
   --font-size-lg: #{rem(18)};
-  --font-size-xl: #{rem(24)};
-  --font-size-2xl: #{rem(32)};
-  --font-size-3xl: #{rem(48)};
-  --font-size-4xl: #{rem(60)};
+
+  // Fluid typography (scales seamlessly between mobile 320px and desktop 1440px)
+  --font-size-xl: clamp(#{rem(20)}, 1.5vw + #{rem(16)}, #{rem(24)});
+  --font-size-2xl: clamp(#{rem(24)}, 2vw + #{rem(18)}, #{rem(32)});
+  --font-size-3xl: clamp(#{rem(32)}, 4vw + #{rem(20)}, #{rem(48)});
+  --font-size-4xl: clamp(#{rem(40)}, 5vw + #{rem(24)}, #{rem(60)});
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -45,17 +48,7 @@
   --line-height-tight: 1.2;
   --line-height-base: 1.6;
 
-  // --- Spacing (8px grid system) ---
-  --space-2xs: #{rem(4)};
-  --space-xs: #{rem(8)};
-  --space-sm: #{rem(12)};
-  --space-md: #{rem(16)};
-  --space-lg: #{rem(24)};
-  --space-xl: #{rem(32)};
-  --space-2xl: #{rem(48)};
-  --space-3xl: #{rem(64)};
-
-  // --- Z-Index ---
+  // --- Z-Index (Strict Layering) ---
   --z-base: 0;
   --z-header: 100;
   --z-dropdown: 200;
@@ -66,6 +59,8 @@
   --ease-main: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s var(--ease-main);
   --transition-normal: 0.6s var(--ease-main);
+  --transition-theme:
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 
   // --- Colors (Primitive) ---
   --color-neutral-900: hsl(30deg 10% 4%);
@@ -94,6 +89,7 @@
   --radius-sm: #{rem(8)};
   --radius-md: #{rem(12)};
   --radius-lg: #{rem(20)};
+  --radius-xl: #{rem(24)};
   --radius-full: 9999px;
 }
 
@@ -117,7 +113,7 @@ html[data-theme="light"] {
 }
 
 // =========================
-// SCSS PROXY VARIABLES
+// SCSS PROXY VARIABLES (Aliases for Autocomplete & DX)
 // =========================
 
 $font-main: var(--font-family-main);
@@ -144,7 +140,7 @@ $transition-fast: var(--transition-fast);
 $transition-normal: var(--transition-normal);
 
 // =========================
-// BREAKPOINTS & MIXINS
+// Grid & Breakpoints
 // =========================
 
 $breakpoints: (

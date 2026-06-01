@@ -8,13 +8,17 @@
   border-block-end: rem(1) solid transparent;
   background-color: transparent;
   transition:
-    background-color $transition-normal,
-    border-color $transition-normal,
-    backdrop-filter $transition-normal;
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    backdrop-filter var(--transition-normal);
 
   &--scrolled {
-    border-block-end-color: $color-border;
-    background-color: color-mix(in srgb, $color-background 80%, transparent);
+    border-block-end-color: var(--color-border);
+    background-color: color-mix(
+      in srgb,
+      var(--color-background) 80%,
+      transparent
+    );
     backdrop-filter: blur(rem(12));
   }
 
@@ -22,26 +26,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-inline-size: rem(1440);
-    margin-inline: auto;
-    padding-block: rem(20);
-    padding-inline: rem(24);
+    padding-block: rem(16);
 
     @include respond-to("tablet") {
       padding-block: rem(24);
-      padding-inline: rem(48);
     }
   }
 
   &__logo {
-    color: $color-text-primary;
+    color: var(--color-text-primary);
     font-size: rem(20);
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    text-decoration: none;
+    font-weight: var(--font-weight-bold);
 
     &-accent {
-      color: $color-primary;
+      color: var(--color-primary);
     }
   }
 
@@ -61,12 +59,15 @@
     align-items: center;
     gap: rem(32);
     inline-size: 100%;
-    block-size: 100vh;
+    block-size: 100dvh;
     padding: rem(32);
-    background-color: color-mix(in srgb, $color-background 95%, transparent);
-    transition: inset-inline-end $transition-normal;
+    background-color: color-mix(
+      in srgb,
+      var(--color-background) 95%,
+      transparent
+    );
+    transition: inset-inline-end var(--transition-normal);
     backdrop-filter: blur(rem(16));
-    will-change: inset-inline-end;
 
     &--open {
       inset-inline-end: 0;
@@ -83,19 +84,21 @@
       background-color: transparent;
       transition: none;
       backdrop-filter: none;
-      will-change: auto;
     }
+  }
+
+  &__menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__burger {
     position: relative;
-    z-index: 101;
+    z-index: 1;
     display: block;
     inline-size: rem(24);
     block-size: rem(24);
-    border: none;
-    background: transparent;
-    cursor: pointer;
 
     @include respond-to("tablet") {
       display: none;
@@ -108,10 +111,10 @@
       display: block;
       inline-size: 100%;
       block-size: rem(2);
-      background-color: $color-text-primary;
+      background-color: var(--color-text-primary);
       transition:
-        transform $transition-fast,
-        background-color $transition-fast;
+        transform var(--transition-fast),
+        background-color var(--transition-fast);
       transform: translateY(-50%);
 
       &::before,
@@ -120,10 +123,10 @@
         inset-inline-start: 0;
         inline-size: 100%;
         block-size: rem(2);
-        background-color: $color-text-primary;
+        background-color: var(--color-text-primary);
         transition:
-          transform $transition-fast,
-          inset-block-start $transition-fast;
+          transform var(--transition-fast),
+          inset-block-start var(--transition-fast);
         content: "";
       }
 
@@ -154,46 +157,48 @@
 
   &__link {
     padding: rem(8) rem(16);
-    border-radius: $radius-lg;
-    color: $color-text-muted;
-    font-size: rem(14);
-    font-weight: 500;
-    text-decoration: none;
+    border-radius: var(--radius-full);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     transition:
-      color $transition-fast,
-      background-color $transition-fast;
+      color var(--transition-fast),
+      background-color var(--transition-fast);
 
-    &:hover {
-      background-color: color-mix(in srgb, $color-text-primary 4%, transparent);
-      color: $color-text-primary;
+    &:hover,
+    &:focus-visible {
+      color: var(--color-text-primary);
     }
 
     &--active {
-      background-color: $color-border;
-      color: $color-text-primary;
+      background-color: var(--color-border);
+      color: var(--color-text-primary);
     }
   }
 
   &__cta {
-    padding: rem(8) rem(20);
-    border: rem(1) solid $color-border;
-    border-radius: $radius-lg;
-    color: $color-text-primary;
-    font-size: rem(14);
-    font-weight: 500;
-    text-decoration: none;
-    will-change: transform, box-shadow;
+    padding: rem(8) rem(24);
+    border: rem(1) solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     transition:
-      color $transition-fast,
-      border-color $transition-fast,
-      background-color $transition-fast,
-      box-shadow $transition-fast;
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast);
 
-    &:hover {
-      border-color: $color-primary;
-      background-color: color-mix(in srgb, $color-primary 4%, transparent);
-      color: $color-primary;
-      box-shadow: 0 rem(4) rem(15) $color-primary-glow;
+    &:hover,
+    &:focus-visible {
+      border-color: var(--color-primary);
+      background-color: color-mix(
+        in srgb,
+        var(--color-primary) 6%,
+        transparent
+      );
+      color: var(--color-primary);
+      box-shadow: 0 rem(4) rem(20) var(--color-primary-glow);
     }
   }
 }

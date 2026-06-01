@@ -2,43 +2,30 @@
 
 .contact {
   position: relative;
-  padding: rem(128) 0 rem(64);
+  padding-block: rem(128) rem(64);
   overflow: hidden;
   background-color: $color-background;
 
-  &__divider {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background-color: $color-border;
-  }
-
   &__container {
-    width: 100%;
-    margin: 0 auto;
-    padding-right: var(--space-lg);
-    padding-left: var(--space-lg);
+    inline-size: 100%;
   }
 
   &__max-width {
-    max-width: rem(768);
-    margin: 0 auto;
+    max-inline-size: rem(768);
+    margin-inline: auto;
     text-align: center;
   }
 
   &__label {
-    margin-bottom: var(--space-lg);
+    margin-block-end: rem(24);
     color: $color-text-muted;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   &__title {
-    margin-bottom: var(--space-xl);
+    margin-block-end: rem(32);
     color: $color-text-primary;
     font-family: $font-main;
     font-size: var(--font-size-3xl);
@@ -55,8 +42,9 @@
   }
 
   &__description {
-    max-width: rem(512);
-    margin: 0 auto var(--space-2xl);
+    max-inline-size: rem(512);
+    margin-inline: auto;
+    margin-block-end: rem(48);
     color: $color-text-muted;
     font-size: var(--font-size-lg);
     line-height: var(--line-height-base);
@@ -65,9 +53,9 @@
   &__resume-btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-md) var(--space-2xl);
-    border: 1px solid $color-border;
+    gap: rem(12);
+    padding: rem(16) rem(48);
+    border: rem(1) solid $color-border;
     border-radius: $radius-full;
     background-color: $color-bg-card;
     color: $color-text-primary;
@@ -75,7 +63,6 @@
     font-weight: var(--font-weight-medium);
     text-decoration: none;
     will-change: transform, box-shadow;
-
     transition:
       color $transition-fast,
       border-color $transition-fast,
@@ -83,25 +70,35 @@
       transform $transition-fast;
 
     svg {
-      width: rem(20);
-      height: rem(20);
-      transition: transform $transition-fast;
+      pointer-events: none;
+      inline-size: rem(20);
+      block-size: rem(20);
+      transition: transform $transition-fast $ease-main;
     }
 
     &:hover {
       border-color: $color-primary;
       color: $color-primary;
+      transform: translateY(rem(-2));
       box-shadow: 0 rem(8) rem(25) $color-primary-glow;
+
+      svg {
+        transform: translateY(rem(2));
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-    margin-top: rem(80);
-    list-style: none;
+    gap: rem(16);
+    margin-block-start: rem(80);
     padding: 0;
+    list-style: none;
 
     @include respond-to("tablet") {
       grid-template-columns: repeat(4, 1fr);
@@ -113,15 +110,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-lg);
-    border: 1px solid $color-border;
+    gap: rem(12);
+    padding: rem(24);
+    border: rem(1) solid $color-border;
     border-radius: $radius-md;
     background-color: $color-bg-card;
     color: $color-text-muted;
     text-decoration: none;
     will-change: transform, box-shadow;
-
     transition:
       border-color $transition-fast,
       color $transition-fast,
@@ -129,11 +125,12 @@
       box-shadow $transition-normal;
 
     svg {
-      width: rem(24);
-      height: rem(24);
+      pointer-events: none;
+      inline-size: rem(24);
+      block-size: rem(24);
       transition:
         color $transition-fast,
-        transform $transition-fast;
+        transform $transition-fast $ease-main;
     }
 
     span {
@@ -145,11 +142,17 @@
     &:hover {
       border-color: $color-primary;
       color: $color-text-primary;
+      transform: translateY(rem(-4));
       box-shadow: 0 rem(12) rem(30) $color-primary-glow;
 
       svg {
         color: $color-primary;
+        transform: scale(1.08);
       }
+    }
+
+    &:active {
+      transform: translateY(rem(-1));
     }
   }
 
@@ -162,8 +165,11 @@
   &__delay-100 {
     animation-delay: 100ms;
   }
-  &__delay-200 {
-    animation-delay: 200ms;
+  &__delay-300 {
+    animation-delay: 300ms;
+  }
+  &__delay-400 {
+    animation-delay: 400ms;
   }
 }
 
