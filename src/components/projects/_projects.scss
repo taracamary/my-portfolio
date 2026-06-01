@@ -4,7 +4,7 @@
   position: relative;
   padding: 8rem 0;
   overflow: hidden;
-  background-color: var(--color-background);
+  background-color: $color-background;
 
   &__divider {
     position: absolute;
@@ -12,7 +12,7 @@
     right: 0;
     left: 0;
     height: 1px;
-    background-color: var(--color-border);
+    background-color: $color-border;
   }
 
   &__container {
@@ -36,7 +36,7 @@
 
   &__label {
     margin-bottom: 1rem;
-    color: var(--color-text-muted);
+    color: $color-text-muted;
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -44,8 +44,8 @@
   }
 
   &__title {
-    color: var(--color-text-primary);
-    font-family: var(--font-serif);
+    color: $color-text-primary;
+    font-family: var(--font-serif, $font-main);
     font-size: 3rem;
 
     @include respond-to("tablet") {
@@ -54,7 +54,7 @@
 
     &-italic {
       font-style: italic;
-      color: var(--color-primary);
+      color: $color-primary;
     }
   }
 
@@ -62,17 +62,23 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-text-muted);
+    color: $color-text-muted;
     font-size: 0.875rem;
-    transition: color var(--transition-fast);
+    text-decoration: none;
+    transition: color $transition-fast;
 
     svg {
       width: 1rem;
       height: 1rem;
+      transition: transform $transition-fast;
     }
 
     &:hover {
-      color: var(--color-primary);
+      color: $color-primary;
+
+      svg {
+        transform: translateX(4px);
+      }
     }
 
     &--desktop {
@@ -94,14 +100,26 @@
   }
 
   &__card {
+    position: relative;
     overflow: hidden;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background-color: var(--color-bg-card);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-bg-card;
     opacity: 0;
     cursor: pointer;
+    transition:
+      border-color $transition-fast,
+      transform $transition-normal,
+      box-shadow $transition-normal;
     animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     transform: translateY(20px);
+    will-change: transform, border-color, box-shadow;
+
+    &:hover {
+      border-color: $color-border-hover;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px $color-primary-glow;
+    }
   }
 
   &__image-wrapper {
@@ -114,26 +132,23 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    will-change: transform;
     transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-
-    .projects__card:hover & {
-      transform: scale(1.05);
-    }
   }
 
   &__overlay {
     position: absolute;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgb(0 0 0 / 45%);
     visibility: hidden;
     opacity: 0;
     transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
-    inset: 0;
+      opacity $transition-fast,
+      visibility $transition-fast;
 
     .projects__card:hover & {
       visibility: visible;
@@ -147,14 +162,15 @@
     align-items: center;
     width: 2.75rem;
     height: 2.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: 9999px;
-    background-color: var(--color-bg-card);
-    color: var(--color-text-primary);
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    background-color: $color-bg-card;
+    color: $color-text-primary;
     cursor: pointer;
     transition:
-      color var(--transition-fast),
-      border-color var(--transition-fast);
+      color $transition-fast,
+      border-color $transition-fast,
+      transform $transition-fast;
 
     svg {
       width: 1rem;
@@ -162,8 +178,8 @@
     }
 
     &:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
+      border-color: $color-primary;
+      color: $color-primary;
     }
   }
 
@@ -181,29 +197,46 @@
   }
 
   &__card-title {
-    color: var(--color-text-primary);
+    color: $color-text-primary;
     font-size: 1.125rem;
     font-weight: 500;
+    transition: color $transition-fast;
+
+    .projects__card:hover & {
+      color: $color-primary;
+    }
   }
 
   &__arrow-link {
-    color: var(--color-text-muted);
-    transition: color var(--transition-fast);
+    color: $color-text-muted;
+    transition:
+      color $transition-fast,
+      transform $transition-fast;
 
     svg {
       width: 1rem;
       height: 1rem;
+      transition: transform $transition-fast;
     }
 
     .projects__card:hover & {
-      color: var(--color-primary);
+      color: $color-primary;
+    }
+
+    .projects__card:hover & svg {
+      transform: translate(2px, -2px);
     }
   }
 
   &__card-description {
-    color: var(--color-text-muted);
+    color: $color-text-muted;
     font-size: 0.875rem;
     line-height: 1.625;
+    transition: color $transition-fast;
+
+    .projects__card:hover & {
+      color: $color-text-primary;
+    }
   }
 
   &__tags {
@@ -216,14 +249,10 @@
   &__tag {
     display: inline-flex;
     padding: 0.25rem 0.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: 9999px;
-    background-color: color-mix(
-      in srgb,
-      var(--color-text-primary) 2%,
-      transparent
-    );
-    color: var(--color-text-muted);
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    background-color: color-mix(in srgb, $color-text-primary 2%, transparent);
+    color: $color-text-muted;
     font-size: 0.75rem;
     font-weight: 500;
   }

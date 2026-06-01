@@ -9,13 +9,13 @@
   border-bottom: 1px solid transparent;
   background-color: transparent;
   transition:
-    background-color var(--transition-normal),
-    border-color var(--transition-normal),
-    backdrop-filter var(--transition-normal);
+    background-color $transition-normal,
+    border-color $transition-normal,
+    backdrop-filter $transition-normal;
 
   &--scrolled {
-    border-bottom-color: var(--color-border);
-    background-color: hsl(240deg 9% 4% / 80%);
+    border-bottom-color: $color-border;
+    background-color: color-mix(in srgb, $color-background 80%, transparent);
     backdrop-filter: blur(12px);
   }
 
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1440px;
+    max-width: 90rem;
     margin: 0 auto;
     padding: 1.25rem 1.5rem;
 
@@ -33,13 +33,14 @@
   }
 
   &__logo {
-    color: var(--color-text-primary);
+    color: $color-text-primary;
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.05em;
+    text-decoration: none;
 
     &-accent {
-      color: var(--color-primary);
+      color: $color-primary;
     }
   }
 
@@ -61,9 +62,10 @@
     width: 100%;
     height: 100vh;
     padding: 2rem;
-    background-color: hsl(240deg 9% 4% / 95%);
-    transition: right var(--transition-normal);
+    background-color: color-mix(in srgb, $color-background 95%, transparent);
+    transition: right $transition-normal;
     backdrop-filter: blur(16px);
+    will-change: right;
 
     &--open {
       right: 0;
@@ -80,6 +82,7 @@
       background-color: transparent;
       transition: none;
       backdrop-filter: none;
+      will-change: auto;
     }
   }
 
@@ -100,31 +103,32 @@
     &-line {
       position: absolute;
       top: 50%;
+      left: 0;
       display: block;
       width: 100%;
       height: 2px;
-      background-color: var(--color-text-primary);
+      background-color: $color-text-primary;
       transition:
-        transform var(--transition-fast),
-        background-color var(--transition-fast);
+        transform $transition-fast,
+        background-color $transition-fast;
       transform: translateY(-50%);
 
       &::before,
       &::after {
         position: absolute;
+        left: 0;
         width: 100%;
         height: 2px;
-        background-color: var(--color-text-primary);
+        background-color: $color-text-primary;
         transition:
-          transform var(--transition-fast),
-          top var(--transition-fast);
+          transform $transition-fast,
+          top $transition-fast;
         content: "";
       }
 
       &::before {
         top: -8px;
       }
-
       &::after {
         top: 8px;
       }
@@ -149,38 +153,46 @@
 
   &__link {
     padding: 0.5rem 1rem;
-    border-radius: var(--radius-lg);
-    color: var(--color-text-muted);
+    border-radius: $radius-lg;
+    color: $color-text-muted;
     font-size: 0.875rem;
     font-weight: 500;
+    text-decoration: none;
     transition:
-      color var(--transition-fast),
-      background-color var(--transition-fast);
+      color $transition-fast,
+      background-color $transition-fast;
 
     &:hover {
-      color: var(--color-text-primary);
+      background-color: color-mix(in srgb, $color-text-primary 4%, transparent);
+      color: $color-text-primary;
     }
 
     &--active {
-      background-color: var(--color-border);
-      color: var(--color-text-primary);
+      background-color: $color-border;
+      color: $color-text-primary;
     }
   }
 
   &__cta {
     padding: 0.5rem 1.25rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    color: var(--color-text-primary);
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    color: $color-text-primary;
     font-size: 0.875rem;
     font-weight: 500;
+    text-decoration: none;
+    will-change: transform, box-shadow;
     transition:
-      color var(--transition-fast),
-      border-color var(--transition-fast);
+      color $transition-fast,
+      border-color $transition-fast,
+      background-color $transition-fast,
+      box-shadow $transition-fast;
 
     &:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
+      border-color: $color-primary;
+      background-color: color-mix(in srgb, $color-primary 4%, transparent);
+      color: $color-primary;
+      box-shadow: 0 4px 15px $color-primary-glow;
     }
   }
 }
