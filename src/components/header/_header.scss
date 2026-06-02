@@ -201,4 +201,56 @@
       box-shadow: 0 rem(4) rem(20) var(--color-primary-glow);
     }
   }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: rem(12);
+
+    @include respond-to("mobile-lg") {
+      gap: rem(16);
+    }
+  }
+
+  &__theme-toggle,
+  &__lang-toggle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: rem(40);
+    block-size: rem(40);
+    border: rem(1) solid var(--color-border);
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--color-primary);
+      background-color: color-mix(
+        in srgb,
+        var(--color-primary) 6%,
+        transparent
+      );
+      color: var(--color-primary);
+    }
+  }
+
+  &__icon {
+    inline-size: rem(18);
+    block-size: rem(18);
+
+    &--sun {
+      display: none;
+    }
+
+    &--moon {
+      display: block;
+    }
+  }
 }

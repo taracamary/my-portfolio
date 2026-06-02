@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maria | Frontend Developer Portfolio</title>
+
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const currentTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', currentTheme);
+    })();
+  </script>
 </head>
 
 <body>

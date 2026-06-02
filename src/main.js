@@ -5,9 +5,55 @@ document.addEventListener('DOMContentLoaded', () => {
   const burgerBtn = document.querySelector('.header__burger');
   const menu = document.querySelector('.header__menu');
   const menuLinks = document.querySelectorAll('.header__link');
+  const themeToggleBtn = document.querySelector('.header__theme-toggle');
+  const langToggleBtn = document.querySelector('.header__lang-toggle');
 
   // Защита: если на странице нет базовых элементов шапки, скрипт мягко завершает работу
   if (!header) return;
+
+  // Переключение темы
+  const initTheme = () => {
+    // Проверяем, есть ли сохраненный выбор, иначе смотрим на системные настройки
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const currentTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
+
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  };
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const newTheme = isLight ? 'dark' : 'light';
+
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
+  initTheme();
+
+  // Переключение языка
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      // Смотрим текущий язык на теге html
+      const currentLang = document.documentElement.getAttribute('lang') || 'en';
+      const newLang = currentLang === 'en' ? 'ru' : 'en';
+
+      // Проверяем, поддерживает ли браузер View Transitions API
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
+          // Все изменения внутри этой функции будут анимированы автоматически
+          document.documentElement.setAttribute('lang', newLang);
+          localStorage.setItem('lang', newLang);
+        });
+      } else {
+        // Меняем атрибут
+        document.documentElement.setAttribute('lang', newLang);
+        localStorage.setItem('lang', newLang);
+      }
+    });
+  }
 
   if (burgerBtn && menu) {
     const toggleMenu = (isOpen) => {

@@ -110,6 +110,30 @@ html[data-theme="light"] {
   --color-primary-glow: rgb(184 134 11 / 8%);
 
   --color-focus-ring: var(--color-primary);
+
+  .header {
+    &__icon--sun {
+      display: block;
+    }
+
+    &__icon--moon {
+      display: none;
+    }
+  }
+}
+
+// Если активен английский — прячем русский текст
+html[lang="en"] {
+  [lang="ru"] {
+    display: none !important;
+  }
+}
+
+// Если активен русский — прячем английский текст
+html[lang="ru"] {
+  [lang="en"] {
+    display: none !important;
+  }
 }
 
 // =========================

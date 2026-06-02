@@ -12,23 +12,67 @@
 
       <ul id="main-menu" class="header__menu">
         <li class="header__menu-item">
-          <a href="#" class="header__link header__link--active">Home</a>
+          <a href="#" class="header__link header__link--active">
+            <span lang="en">Home</span>
+            <span lang="ru">Главная</span>
+          </a>
         </li>
         <li class="header__menu-item">
-          <a href="#about" class="header__link">About</a>
+          <a href="#about" class="header__link">
+            <span lang="en">About</span>
+            <span lang="ru">Обо мне</span>
+          </a>
         </li>
         <li class="header__menu-item">
-          <a href="#projects" class="header__link">Projects</a>
+          <a href="#projects" class="header__link">
+            <span lang="en">Projects</span>
+            <span lang="ru">Проекты</span>
+          </a>
         </li>
         <li class="header__menu-item">
-          <a href="#experience" class="header__link">Experience</a>
+          <a href="#experience" class="header__link">
+            <span lang="en">Experience</span>
+            <span lang="ru">Опыт</span>
+          </a>
         </li>
         <li class="header__menu-item">
-          <a href="#contact" class="header__link">Contact</a>
+          <a href="#contact" class="header__link">
+            <span lang="en">Contact</span>
+            <span lang="ru">Контакты</span>
+          </a>
         </li>
       </ul>
     </nav>
 
-    <a href="#contact" class="header__cta">Hire me</a>
+    <div class="header__actions">
+      <button type="button" class="header__theme-toggle" aria-label="Toggle theme">
+        <svg class="header__icon header__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="header__icon header__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="18.36" x2="5.64" y2="19.78"></line>
+          <line x1="18.36" y1="4.22" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+
+      <button type="button" class="header__lang-toggle" aria-label="Switch language">
+        <span lang="en">EN</span>
+        <span lang="ru">RU</span>
+      </button>
+
+      <a href="#contact" class="header__cta">
+        <span lang="en">Hire me</span>
+        <span lang="ru">Связаться</span>
+      </a>
+    </div>
   </div>
 </header>

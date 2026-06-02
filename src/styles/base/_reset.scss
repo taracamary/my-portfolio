@@ -133,3 +133,9 @@ textarea {
     background: var(--color-border-hover);
   }
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: var(--ease-main);
+}
