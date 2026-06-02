@@ -139,3 +139,10 @@ textarea {
   animation-duration: 0.5s;
   animation-timing-function: var(--ease-main);
 }
+
+svg {
+  use {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+}
