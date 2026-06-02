@@ -24,28 +24,43 @@
 
   &__container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-block: rem(16);
 
     @include respond-to("tablet") {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       padding-block: rem(24);
     }
   }
 
   &__logo {
+    order: 1;
     color: var(--color-text-primary);
     font-size: rem(20);
     font-weight: var(--font-weight-bold);
+    margin-inline-end: auto;
 
     &-accent {
       color: var(--color-primary);
+    }
+
+    @include respond-to("tablet") {
+      order: initial;
+      margin-inline-end: 0;
     }
   }
 
   &__nav {
     display: flex;
     align-items: center;
+    order: 3;
+
+    @include respond-to("tablet") {
+      order: initial;
+      grid-column: 2;
+      justify-self: center;
+    }
   }
 
   &__menu {
@@ -97,6 +112,9 @@
     position: relative;
     z-index: 1;
     display: block;
+    border: none;
+    background: transparent;
+    cursor: pointer;
     inline-size: rem(24);
     block-size: rem(24);
 
@@ -206,9 +224,19 @@
     display: flex;
     align-items: center;
     gap: rem(12);
+    order: 2;
+    margin-inline-end: rem(16);
 
     @include respond-to("mobile-lg") {
       gap: rem(16);
+      margin-inline-end: rem(20);
+    }
+
+    @include respond-to("tablet") {
+      order: initial;
+      margin-inline-end: 0;
+      grid-column: 3;
+      justify-self: end;
     }
   }
 

@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Защита: если на странице нет базовых элементов шапки, скрипт мягко завершает работу
   if (!header) return;
 
-  // Переключение темы
+  // Инициализация темы (выполняется мгновенно без анимации, чтобы избежать вспышки)
   const initTheme = () => {
-    // Проверяем, есть ли сохраненный выбор, иначе смотрим на системные настройки
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
     const currentTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
@@ -21,17 +20,27 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', currentTheme);
   };
 
+  initTheme();
+
+  // Плавное переключение темы по клику
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
       const isLight = document.documentElement.getAttribute('data-theme') === 'light';
       const newTheme = isLight ? 'dark' : 'light';
 
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
+      // Используем View Transitions API для бесшовного перетекания цветов
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+        });
+      } else {
+        // Фолбек для старых браузеров
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
     });
   }
-
-  initTheme();
 
   // Переключение языка
   if (langToggleBtn) {
@@ -55,14 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Бургер-меню
   if (burgerBtn && menu) {
     const toggleMenu = (isOpen) => {
       burgerBtn.classList.toggle('header__burger--open', isOpen);
       menu.classList.toggle('header__menu--open', isOpen);
-
-      // Доступность для скринридеров (семантика)
       burgerBtn.setAttribute('aria-expanded', isOpen);
-
       // Блокируем скролл body, чтобы страница не дергалась под меню
       document.body.style.overflow = isOpen ? 'hidden' : '';
     };
@@ -88,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Логика скролла шапки
   const handleScroll = () => {
     const currentScroll = window.scrollY;
     header.classList.toggle('header--scrolled', currentScroll > 20);
@@ -103,8 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Отключает блокировку главного потока браузера.
   window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll(); // Проверяем положение экрана при первой загрузке
+  handleScroll();
 
+  // Подсветка активных пунктов меню при скролле
   if (menuLinks.length > 0) {
     // Собираем только реальные секции на основе href ссылок нашего меню
     const sections = Array.from(menuLinks)
@@ -112,7 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = link.getAttribute('href');
         return href && href.startsWith('#') && href.length > 1 ? document.querySelector(href) : null;
       })
-      .filter(section => section !== null); // Отсекаем пустые ссылки или ссылки-заглушки типа "#"
+      // Отсекаем пустые ссылки или ссылки-заглушки типа "#"
+      .filter(section => section !== null);
 
     if (sections.length > 0) {
       const observerOptions = {
@@ -131,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Пробегаемся по ссылкам и синхронизируем классы верстки
             menuLinks.forEach(link => {
-              const isCurrent = link.getAttribute('href') === `#${id}`;
+              const isCurrent = link.getAttribute('href') === `#${id}` && id !== null;
               link.classList.toggle('header__link--active', isCurrent);
             });
           }
