@@ -35,3 +35,11 @@
     transparent
   );
 }
+
+svg {
+  use {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+}
+
