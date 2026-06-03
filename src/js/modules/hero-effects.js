@@ -1,10 +1,21 @@
 /**
- * Инициализация параллакса сетки и движения glow-маски
+ * Инициализация параллакса сетки и движения glow-маски.
  * @param {HTMLElement} heroElement 
  */
 export const initHeroEffects = (heroElement) => {
   if (!heroElement) return;
 
+  // Проверяем, есть ли у пользователя точный указатель (мышь/трекпад)
+  const isHoverableDevice = window.matchMedia('(pointer: fine)').matches;
+
+  if (!isHoverableDevice) {
+    // На мобильных жестко фиксируем светящуюся маску ровно по центру секции
+    heroElement.style.setProperty('--mouse-x', '50%');
+    heroElement.style.setProperty('--mouse-y', '50%');
+    return; // Выходим из функции, не навешивая тяжелый слушатель событий
+  }
+
+  // Для десктопов оставляем плавный интерактивный трекинг
   heroElement.addEventListener('mousemove', (e) => {
     const rect = heroElement.getBoundingClientRect();
     const x = e.clientX - rect.left;

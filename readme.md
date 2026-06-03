@@ -2,7 +2,7 @@
 
 A fast, responsive, and accessible portfolio website built with pure JavaScript without heavy frameworks. Developed with a focus on flawless responsive layout, high performance, and smooth animations
 
-* **Live Demo:** `[https://your-portfolio-domain.com](https://your-portfolio-domain.com)`
+* **Live Demo:** `[https://maria-kapiturko-portfolio.vercel.app](https://maria-kapiturko-portfolio.vercel.app)`
 
 ---
 

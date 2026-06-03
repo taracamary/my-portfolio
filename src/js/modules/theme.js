@@ -3,9 +3,8 @@
  */
 export const initTheme = () => {
   const savedTheme = localStorage.getItem('theme');
-  const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  const currentTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
-
+  const currentTheme = savedTheme || 'dark';
+  
   document.documentElement.setAttribute('data-theme', currentTheme);
 };
 
