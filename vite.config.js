@@ -6,6 +6,8 @@ export default defineConfig({
     injectHTML()
   ],
   server: {
-    open: true
+    open: true,
+    host: '127.0.0.1', // или '0.0.0.0', чтобы проект был доступен и по локальному IP в сети
+    port: 5173
   }
 });

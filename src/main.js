@@ -45,19 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Переключение языка
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
-      // Смотрим текущий язык на теге html
       const currentLang = document.documentElement.getAttribute('lang') || 'en';
       const newLang = currentLang === 'en' ? 'ru' : 'en';
 
-      // Проверяем, поддерживает ли браузер View Transitions API
       if (document.startViewTransition) {
         document.startViewTransition(() => {
-          // Все изменения внутри этой функции будут анимированы автоматически
           document.documentElement.setAttribute('lang', newLang);
           localStorage.setItem('lang', newLang);
         });
       } else {
-        // Меняем атрибут
         document.documentElement.setAttribute('lang', newLang);
         localStorage.setItem('lang', newLang);
       }
@@ -70,24 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
       burgerBtn.classList.toggle('header__burger--open', isOpen);
       menu.classList.toggle('header__menu--open', isOpen);
       burgerBtn.setAttribute('aria-expanded', isOpen);
-      // Блокируем скролл body, чтобы страница не дергалась под меню
       document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
-    // Клик по кнопке бургера
     burgerBtn.addEventListener('click', () => {
       const isOpen = !menu.classList.contains('header__menu--open');
       toggleMenu(isOpen);
     });
 
-    // Делегирование событий: закрываем меню при клике на любую ссылку внутри nav
     menu.addEventListener('click', (event) => {
       if (event.target.closest('.header__link') && menu.classList.contains('header__menu--open')) {
         toggleMenu(false);
       }
     });
 
-    // Если пользователь открыл меню на мобилке и перевернул экран в альбомный режим (десктоп), сбрасываем состояние и разблокируем body автоматически
     window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
       if (e.matches && menu.classList.contains('header__menu--open')) {
         toggleMenu(false);
@@ -100,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentScroll = window.scrollY;
     header.classList.toggle('header--scrolled', currentScroll > 20);
 
-    // Если мы вернулись на самый верх (в пределах 20px), принудительно активируем Home
     if (currentScroll <= 20) {
       menuLinks.forEach(link => {
         const isHome = link.getAttribute('href') === '#';
@@ -109,19 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Отключает блокировку главного потока браузера.
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
-  // Подсветка активных пунктов меню при скролле
+  // Подсветка active пунктов меню через IntersectionObserver
   if (menuLinks.length > 0) {
-    // Собираем только реальные секции на основе href ссылок нашего меню
     const sections = Array.from(menuLinks)
       .map(link => {
         const href = link.getAttribute('href');
         return href && href.startsWith('#') && href.length > 1 ? document.querySelector(href) : null;
       })
-      // Отсекаем пустые ссылки или ссылки-заглушки типа "#"
       .filter(section => section !== null);
 
     if (sections.length > 0) {
@@ -135,11 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.scrollY <= 20) return;
 
         entries.forEach(entry => {
-          // Если секция попала в рабочую область viewport
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
 
-            // Пробегаемся по ссылкам и синхронизируем классы верстки
             menuLinks.forEach(link => {
               const isCurrent = link.getAttribute('href') === `#${id}` && id !== null;
               link.classList.toggle('header__link--active', isCurrent);
@@ -150,5 +136,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       sections.forEach(section => observer.observe(section));
     }
+  }
+
+  // Интерактивный трекинг курсора
+  const hero = document.getElementById('hero');
+  if (hero) {
+    // Слушаем движение мыши строго над секцией Hero
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Передаем точные пиксели для CSS Mask и translate3d
+      hero.style.setProperty('--mouse-x', `${x}px`);
+      hero.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive: true }); // passive: true повышает производительность скролла/движений
   }
 });
