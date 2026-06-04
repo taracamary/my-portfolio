@@ -97,11 +97,7 @@
   &:hover,
   &:focus-visible {
     border-color: $color-primary;
-    background-color: color-mix(
-      in srgb,
-      $color-primary 6%,
-      transparent
-    );
+    background-color: color-mix(in srgb, $color-primary 6%, transparent);
     color: $color-primary;
   }
 }
@@ -139,7 +135,10 @@
 
 // Icon wrapper with background
 // Used for decorative icons in cards
-@mixin icon-box($size: rem(40), $bg-color: color-mix(in srgb, $color-primary 10%, transparent)) {
+@mixin icon-box(
+  $size: rem(40),
+  $bg-color: color-mix(in srgb, $color-primary 10%, transparent)
+) {
   display: flex;
   justify-content: center;
   align-items: center;
