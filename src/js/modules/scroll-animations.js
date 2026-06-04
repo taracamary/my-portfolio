@@ -1,11 +1,4 @@
-const REVEAL_SELECTOR = [
-  '.hero__animate-fade-up',
-  '.projects__animate-fade-up',
-  '.experience__animate-fade-up',
-  '.contact__animate-fade-up',
-  '.u-fade-up'
-].join(', ');
-
+const REVEAL_SELECTOR = '.u-fade-up';
 const VISIBLE_CLASS = 'is-visible';
 
 export const initScrollAnimations = () => {
@@ -32,4 +25,8 @@ export const initScrollAnimations = () => {
   });
 
   animatedElements.forEach(element => observer.observe(element));
+
+  return () => {
+    observer.disconnect();
+  };
 };

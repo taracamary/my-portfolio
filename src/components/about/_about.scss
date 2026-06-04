@@ -2,24 +2,17 @@
 @use "../../styles/utilities" as *;
 
 .about {
-  position: relative;
-  padding-block: rem(64);
-  overflow: hidden;
-  background-color: $color-background;
-
-  @include respond-to("desktop") {
-    padding-block: rem(128);
-  }
+  @include section-shell;
 
   &__container {
-    width: 100%;
+    @include container-base;
   }
 
   &__grid {
     display: grid;
     align-items: start;
     gap: rem(80);
-    max-width: rem(1152);
+    max-inline-size: rem(1152);
     margin-inline: auto;
 
     @include respond-to("desktop") {
@@ -63,7 +56,7 @@
 
   &__icon-box {
     @include icon-box(rem(40));
-    margin-bottom: rem(16);
+    margin-block-end: rem(16);
   }
 
   &__icon {
@@ -73,7 +66,7 @@
 
   &__card-title {
     @include card-title;
-    margin-bottom: rem(4);
+    margin-block-end: rem(4);
   }
 
   &__card-text {

@@ -2,17 +2,10 @@
 @use "../../styles/utilities" as *;
 
 .projects {
-  position: relative;
-  padding-block: rem(64);
-  overflow: hidden;
-  background-color: $color-background;
-
-  @include respond-to("desktop") {
-    padding-block: rem(128);
-  }
+  @include section-shell;
 
   &__container {
-    inline-size: 100%;
+    @include container-base;
   }
 
   &__max-width {
@@ -210,22 +203,5 @@
     @include respond-to("tablet") {
       display: none;
     }
-  }
-
-  &__animate-fade-up {
-    @include animate-fade-up;
-  }
-
-  &__delay-100 {
-    animation-delay: 100ms;
-  }
-  &__delay-200 {
-    animation-delay: 200ms;
-  }
-  &__delay-300 {
-    animation-delay: 300ms;
-  }
-  &__delay-400 {
-    animation-delay: 400ms;
   }
 }

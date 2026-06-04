@@ -1,6 +1,6 @@
 import '../styles/style.scss';
 import { initTheme, setupTheme } from './modules/theme.js';
-import { setupLanguage } from './modules/lang.js';
+import { initLanguage, setupLanguage } from './modules/lang.js';
 import { initBurgerMenu } from './modules/menu.js';
 import { initNavigation } from './modules/navigation.js';
 import { initHeroEffects } from './modules/hero-effects.js';
@@ -8,6 +8,7 @@ import { initScrollAnimations } from './modules/scroll-animations.js';
 
 // Инициализируем тему мгновенно, не дожидаясь сборки DOM, чтобы избежать белой вспышки
 initTheme();
+initLanguage();
 
 document.addEventListener('DOMContentLoaded', () => {
   // Кэшируем глобальные DOM-элементы

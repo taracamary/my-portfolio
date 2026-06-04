@@ -2,17 +2,10 @@
 @use "../../styles/utilities" as *;
 
 .contact {
-  position: relative;
-  padding-block: rem(64);
-  overflow: hidden;
-  background-color: $color-background;
-
-  @include respond-to("desktop") {
-    padding-block: rem(128) rem(64);
-  }
+  @include section-shell(rem(128) rem(64));
 
   &__container {
-    inline-size: 100%;
+    @include container-base;
   }
 
   &__max-width {
@@ -141,22 +134,5 @@
     &:active {
       transform: translateY(rem(-1));
     }
-  }
-
-  &__animate-fade-up {
-    @include animate-fade-up;
-  }
-
-  &__delay-100 {
-    animation-delay: 100ms;
-  }
-  &__delay-200 {
-    animation-delay: 200ms;
-  }
-  &__delay-300 {
-    animation-delay: 300ms;
-  }
-  &__delay-400 {
-    animation-delay: 400ms;
   }
 }

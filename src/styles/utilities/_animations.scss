@@ -1,7 +1,7 @@
 @use "../base/config" as *;
 
 // Core fade-up keyframe animation
-// Used by @mixin animate-fade-up
+// Used by .u-fade-up scroll reveals
 @keyframes fadeUp {
   to {
     opacity: 1;

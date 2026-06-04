@@ -23,6 +23,25 @@
   white-space: nowrap;
 }
 
+.skip-link {
+  position: fixed;
+  inset-block-start: rem(16);
+  inset-inline-start: rem(16);
+  z-index: var(--z-toast);
+  padding: rem(10) rem(16);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  transition: transform var(--transition-fast);
+  transform: translateY(calc(-100% - #{rem(24)}));
+
+  &:focus-visible {
+    transform: translateY(0);
+  }
+}
+
 .divider {
   position: absolute;
   inset-block-start: 0;

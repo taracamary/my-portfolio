@@ -1,6 +1,6 @@
 /**
  * Инициализация параллакса сетки и движения glow-маски.
- * @param {HTMLElement} heroElement 
+ * @param {HTMLElement} heroElement
  */
 export const initHeroEffects = (heroElement) => {
   if (!heroElement) return;
@@ -16,12 +16,18 @@ export const initHeroEffects = (heroElement) => {
   }
 
   // Для десктопов оставляем плавный интерактивный трекинг
-  heroElement.addEventListener('mousemove', (e) => {
+  const handleMouseMove = (e) => {
     const rect = heroElement.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
     heroElement.style.setProperty('--mouse-x', `${x}px`);
     heroElement.style.setProperty('--mouse-y', `${y}px`);
-  }, { passive: true });
+  };
+
+  heroElement.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+  return () => {
+    heroElement.removeEventListener('mousemove', handleMouseMove);
+  };
 };

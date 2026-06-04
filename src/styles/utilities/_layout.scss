@@ -15,13 +15,6 @@
   gap: $gap;
 }
 
-// Flex center — both horizontally and vertically
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 // Responsive grid layout
 // Tablet+: configurable columns
 @mixin responsive-grid($tablet-cols: 2, $gap: rem(16)) {
@@ -44,6 +37,18 @@
 // Used for section containers
 @mixin container-base {
   inline-size: 100%;
+}
+
+// Shared section shell used by content sections below the hero
+@mixin section-shell($desktop-padding-block: rem(128)) {
+  position: relative;
+  padding-block: rem(64);
+  overflow: hidden;
+  background-color: $color-background;
+
+  @include respond-to("desktop") {
+    padding-block: $desktop-padding-block;
+  }
 }
 
 // Center text alignment (used for headings, intro sections)
