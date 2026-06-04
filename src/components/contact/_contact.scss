@@ -50,6 +50,18 @@
     line-height: var(--line-height-base);
   }
 
+  &__resume-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: rem(16);
+
+    @include respond-to("tablet") {
+      flex-direction: row;
+    }
+  }
+
   &__resume-btn {
     display: inline-flex;
     align-items: center;
@@ -81,10 +93,6 @@
       color: $color-primary;
       transform: translateY(rem(-2));
       box-shadow: 0 rem(8) rem(25) $color-primary-glow;
-
-      svg {
-        transform: translateY(rem(2));
-      }
     }
 
     &:active {
