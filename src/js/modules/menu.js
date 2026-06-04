@@ -20,7 +20,11 @@ export const initBurgerMenu = (burgerBtn, menu) => {
 
   // Закрытие меню при клике на ссылки (делегирование событий)
   menu.addEventListener('click', (e) => {
-    if (e.target.closest('.header__link') && menu.classList.contains('header__menu--open')) {
+    if (
+      e.target instanceof Element
+      && e.target.closest('.header__link')
+      && menu.classList.contains('header__menu--open')
+    ) {
       toggleMenu(false);
     }
   });

@@ -113,12 +113,16 @@
   }
 }
 
-// Animated fade-up on load
+// Scroll-triggered fade-up reveal
 // Combines opacity and translateY animation
 @mixin animate-fade-up($offset: rem(20)) {
   opacity: 0;
-  animation: fadeUp 0.6s var(--ease-main) forwards;
   transform: translateY($offset);
+  will-change: transform, opacity;
+
+  &.is-visible {
+    animation: fadeUp 0.6s var(--ease-main) forwards;
+  }
 }
 
 // Small tag/badge — border, rounded, text styling

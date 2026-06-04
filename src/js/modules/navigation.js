@@ -6,6 +6,8 @@
 export const initNavigation = (header, menuLinks) => {
   if (!header || !menuLinks.length) return;
 
+  const links = Array.from(menuLinks);
+
   // 1. Изменение состояния шапки при скролле
   const handleScroll = () => {
     const currentScroll = window.scrollY;
@@ -13,7 +15,7 @@ export const initNavigation = (header, menuLinks) => {
 
     // Если мы в самом верху — подсвечиваем Главную/Home по умолчанию
     if (currentScroll <= 20) {
-      menuLinks.forEach(link => {
+      links.forEach(link => {
         const isHome = link.getAttribute('href') === '#';
         link.classList.toggle('header__link--active', isHome);
       });
@@ -24,7 +26,9 @@ export const initNavigation = (header, menuLinks) => {
   handleScroll(); // Вызываем один раз для проверки состояния при перезагрузке
 
   // 2. Отслеживание секций через IntersectionObserver
-  const sections = Array.from(menuLinks)
+  if (!('IntersectionObserver' in window)) return;
+
+  const sections = links
     .map(link => {
       const href = link.getAttribute('href');
       return href?.startsWith('#') && href.length > 1 ? document.querySelector(href) : null;
@@ -46,7 +50,7 @@ export const initNavigation = (header, menuLinks) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
-        menuLinks.forEach(link => {
+        links.forEach(link => {
           const isCurrent = link.getAttribute('href') === `#${id}`;
           link.classList.toggle('header__link--active', isCurrent);
         });

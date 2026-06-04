@@ -4,6 +4,7 @@ import { setupLanguage } from './modules/lang.js';
 import { initBurgerMenu } from './modules/menu.js';
 import { initNavigation } from './modules/navigation.js';
 import { initHeroEffects } from './modules/hero-effects.js';
+import { initScrollAnimations } from './modules/scroll-animations.js';
 
 // Инициализируем тему мгновенно, не дожидаясь сборки DOM, чтобы избежать белой вспышки
 initTheme();
@@ -24,4 +25,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initBurgerMenu(burgerBtn, menu);
   initNavigation(header, menuLinks);
   initHeroEffects(heroSection);
+  initScrollAnimations();
 });
