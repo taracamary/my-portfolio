@@ -2,13 +2,11 @@
 
 - A fast, responsive, and accessible portfolio website built with pure JavaScript without heavy frameworks. Developed with a focus on flawless responsive layout, high performance, and smooth animations
 
----
 
 ## 🔗 Live Demo
 
 - **Hosted on Vercel:** [https://maria-kapiturko-portfolio.vercel.app](https://maria-kapiturko-portfolio.vercel.app)
 
----
 
 ## 🚀 Key Features
 
@@ -27,13 +25,11 @@
 - **Menu Highlighting:** Active menu items are tracked via the `IntersectionObserver` API as you scroll. This is incredibly lightweight and vastly superior for CPU performance compared to traditional scroll event listeners
 - **Mobile-First Menu:** The burger menu is fully responsive, supports proper accessibility attributes (`aria-expanded`), and locks background scrolling when active
 
----
 
 ## 🤖 AI-Assisted Workflow (Smart Engineering)
 
 - **Leveraging Modern Tools:** This project was developed utilizing advanced AI pair-programming workflows. AI was used as a senior collaborator to perform rigorous code reviews, optimize complex SCSS parallax math, and modularize the JavaScript architecture into clean, decoupled ES6 components
 
----
 
 ## 🛠 Tech Stack & Architecture
 
@@ -52,7 +48,6 @@
   - Spacings and font sizes are computed dynamically using a custom `rem()` scaling function and fluid typography with `clamp()` for flawless scalability between devices
   - Breakpoints are managed via a centralized map-structure and injected using a custom `@mixin respond-to()`
 
----
 
 ## 📈 Performance & Quality
 
@@ -61,7 +56,6 @@
 - **Code Validity:** The markup is 100% compliant with W3C specifications, containing zero syntax errors
 - **Cross-Browser Consistency:** Fully tested and proven to perform identically across Blink (Chrome, Edge), WebKit (Safari iOS/macOS), and Gecko (Firefox) engines
 
----
 
 ## ⚙️ Getting Started
 
