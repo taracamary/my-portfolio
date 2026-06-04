@@ -1,6 +1,4 @@
-# Portfolio | Maria Kapiturko
-
-- A fast, responsive, and accessible portfolio website built with pure JavaScript without heavy frameworks. Developed with a focus on flawless responsive layout, high performance, and smooth animations
+A fast, responsive, and accessible portfolio website built with pure JavaScript without heavy frameworks. Developed with a focus on flawless responsive layout, high performance, and smooth animations
 
 
 ## 🔗 Live Demo
@@ -61,10 +59,13 @@
 
 ### Prerequisites
 
-Ensure your current local runtime environment contains a stable version of Node.js:
+_Ensure your current local runtime environment contains a stable version of Node.js:_
 
 ```bash
 node --version # Recommended: v18.0.0 or higher
+```
+
+```bash
 npm --version  # Recommended: v9.0.0 or higher
 ```
 
