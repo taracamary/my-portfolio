@@ -1,0 +1,63 @@
+@use "../base/config" as *;
+
+
+// Section label — small uppercase muted text
+// Used in all section introductions
+@mixin label-text {
+  color: $color-text-muted;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+}
+
+// Section title — large, bold, primary-colored heading
+// Includes responsive sizing (tablet: +1 size)
+@mixin section-title {
+  color: $color-text-primary;
+  font-family: $font-main;
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
+
+  @include respond-to("tablet") {
+    font-size: var(--font-size-4xl);
+  }
+
+  // Nested italic variant (e.g., "My <i>Journey</i>")
+  &-italic {
+    font-style: italic;
+    color: $color-primary;
+  }
+}
+
+// Card title — medium weight, primary-colored on hover
+// Used in project cards, experience cards, etc.
+@mixin card-title {
+  color: $color-text-primary;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  transition: color $transition-fast;
+}
+
+// Muted text with interactive color change on hover
+@mixin muted-text-interactive {
+  color: $color-text-muted;
+  transition: color $transition-fast;
+}
+
+@mixin muted-text-interactive--active {
+  color: $color-text-primary;
+}
+
+// Description text — base font size with proper line height
+@mixin description-text {
+  color: $color-text-muted;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+// Large description text — lg size (for hero and intro sections)
+@mixin description-text--lg {
+  color: $color-text-muted;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+}

@@ -1,53 +1,40 @@
 @use "../../styles/base/config" as *;
+@use "../../styles/utilities" as *;
 
 .contact {
   position: relative;
-  padding-block: rem(128) rem(64);
+  padding-block: rem(64);
   overflow: hidden;
   background-color: $color-background;
+
+  @include respond-to("desktop") {
+    padding-block: rem(128) rem(64);
+  }
 
   &__container {
     inline-size: 100%;
   }
 
   &__max-width {
-    max-inline-size: rem(768);
-    margin-inline: auto;
-    text-align: center;
+    @include max-width-container(rem(768));
+    @include text-center;
   }
 
   &__label {
     margin-block-end: rem(24);
-    color: $color-text-muted;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    text-transform: uppercase;
+    @include label-text;
   }
 
   &__title {
     margin-block-end: rem(32);
-    color: $color-text-primary;
-    font-family: $font-main;
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-tight);
-
-    @include respond-to("tablet") {
-      font-size: var(--font-size-4xl);
-    }
-
-    &-italic {
-      font-style: italic;
-      color: $color-primary;
-    }
+    @include section-title;
   }
 
   &__description {
-    max-inline-size: rem(512);
+    max-inline-size: rem(580);
     margin-inline: auto;
     margin-block-end: rem(48);
-    color: $color-text-muted;
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-base);
+    @include description-text--lg;
   }
 
   &__resume-wrapper {
@@ -101,24 +88,16 @@
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: rem(16);
+    @include responsive-grid(4, rem(16));
     margin-block-start: rem(80);
     padding: 0;
     list-style: none;
-
-    @include respond-to("tablet") {
-      grid-template-columns: repeat(4, 1fr);
-    }
   }
 
   &__link {
-    display: flex;
-    flex-direction: column;
+    @include flex-column(rem(12));
     justify-content: center;
     align-items: center;
-    gap: rem(12);
     padding: rem(24);
     border: rem(1) solid $color-border;
     border-radius: $radius-md;
@@ -165,9 +144,7 @@
   }
 
   &__animate-fade-up {
-    opacity: 0;
-    animation: fadeUp 0.6s $ease-main forwards;
-    transform: translateY(rem(20));
+    @include animate-fade-up;
   }
 
   &__delay-100 {
@@ -178,12 +155,5 @@
   }
   &__delay-400 {
     animation-delay: 400ms;
-  }
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

@@ -1,18 +1,22 @@
 @use "../../styles/base/config" as *;
+@use "../../styles/utilities" as *;
 
 .projects {
   position: relative;
-  padding-block: rem(128);
+  padding-block: rem(64);
   overflow: hidden;
   background-color: $color-background;
+
+  @include respond-to("desktop") {
+    padding-block: rem(128);
+  }
 
   &__container {
     inline-size: 100%;
   }
 
   &__max-width {
-    max-inline-size: rem(1152);
-    margin-inline: auto;
+    @include max-width-container(rem(1152));
   }
 
   &__header {
@@ -24,25 +28,11 @@
 
   &__label {
     margin-block-end: rem(16);
-    color: $color-text-muted;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    text-transform: uppercase;
+    @include label-text;
   }
 
   &__title {
-    color: $color-text-primary;
-    font-family: $font-main;
-    font-size: var(--font-size-3xl);
-
-    @include respond-to("tablet") {
-      font-size: var(--font-size-4xl);
-    }
-
-    &-italic {
-      font-style: italic;
-      color: $color-primary;
-    }
+    @include section-title;
   }
 
   &__all-link {
@@ -78,32 +68,17 @@
   }
 
   &__grid {
-    display: grid;
-    gap: rem(24);
-
-    @include respond-to("tablet") {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    @include responsive-grid(2, rem(24));
   }
 
   &__card {
+    @include card-base;
     position: relative;
-    overflow: hidden;
-    border: rem(1) solid $color-border;
-    border-radius: $radius-md;
-    background-color: $color-bg-card;
-    cursor: pointer;
     will-change: transform, border-color, box-shadow;
-    transition:
-      border-color $transition-fast,
-      transform $transition-normal,
-      box-shadow $transition-normal;
 
     &:hover,
     &:focus-within {
-      border-color: $color-border-hover;
-      transform: translateY(rem(-4));
-      box-shadow: 0 rem(12) rem(30) $color-primary-glow;
+      @include interactive-card-hover;
     }
   }
 
@@ -148,39 +123,19 @@
   }
 
   &__overlay-btn {
+    @include icon-button;
     display: flex;
-    justify-content: center;
-    align-items: center;
     inline-size: rem(44);
     block-size: rem(44);
-    border: rem(1) solid $color-border;
-    border-radius: $radius-full;
-    background-color: $color-bg-card;
-    color: $color-text-primary;
-    cursor: pointer;
-    transition:
-      color $transition-fast,
-      border-color $transition-fast,
-      transform $transition-fast;
 
     svg {
       inline-size: rem(16);
       block-size: rem(16);
     }
-
-    &:hover,
-    &:focus {
-      border-color: $color-primary;
-      outline: none;
-      color: $color-primary;
-      transform: scale(1.05);
-    }
   }
 
   &__meta {
-    display: flex;
-    flex-direction: column;
-    gap: rem(12);
+    @include flex-column(rem(12));
     padding: rem(24);
   }
 
@@ -191,10 +146,7 @@
   }
 
   &__card-title {
-    color: $color-text-primary;
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-medium);
-    transition: color $transition-fast;
+    @include card-title;
 
     .projects__card:hover &,
     .projects__card:focus-within & {
@@ -222,23 +174,21 @@
     .projects__card:hover &,
     .projects__card:focus-within & {
       color: $color-primary;
-    }
 
-    .projects__card:hover & svg,
-    .projects__card:focus-within & svg {
-      transform: translate(rem(2), rem(-2));
+      svg {
+        transform: translate(rem(2), rem(-2));
+      }
     }
   }
 
   &__card-description {
-    color: $color-text-muted;
+    @include muted-text-interactive;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-base);
-    transition: color $transition-fast;
 
     .projects__card:hover &,
     .projects__card:focus-within & {
-      color: $color-text-primary;
+      @include muted-text-interactive--active;
     }
   }
 
@@ -250,14 +200,7 @@
   }
 
   &__tag {
-    display: inline-flex;
-    padding: rem(4) rem(12);
-    border: rem(1) solid $color-border;
-    border-radius: $radius-full;
-    background-color: color-mix(in srgb, $color-text-primary 2%, transparent);
-    color: $color-text-muted;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
+    @include tag-base;
   }
 
   &__footer {
@@ -270,9 +213,7 @@
   }
 
   &__animate-fade-up {
-    opacity: 0;
-    animation: fadeUp 0.6s $ease-main forwards;
-    transform: translateY(rem(20));
+    @include animate-fade-up;
   }
 
   &__delay-100 {
@@ -286,12 +227,5 @@
   }
   &__delay-400 {
     animation-delay: 400ms;
-  }
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

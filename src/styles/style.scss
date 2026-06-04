@@ -3,6 +3,8 @@
 @use "base/shared";
 @use "base/config" as *;
 
+@use "utilities";
+
 @use "../components/header/header";
 @use "../components/hero/hero";
 @use "../components/about/about";

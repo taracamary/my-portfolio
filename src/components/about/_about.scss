@@ -1,10 +1,15 @@
 @use "../../styles/base/config" as *;
+@use "../../styles/utilities" as *;
 
 .about {
   position: relative;
-  padding-block: rem(128);
+  padding-block: rem(64);
   overflow: hidden;
   background-color: $color-background;
+
+  @include respond-to("desktop") {
+    padding-block: rem(128);
+  }
 
   &__container {
     width: 100%;
@@ -23,41 +28,20 @@
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    gap: rem(32);
+    @include flex-column(rem(32));
   }
 
   &__label {
-    color: $color-text-muted;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    text-transform: uppercase;
+    @include label-text;
   }
 
   &__title {
-    color: $color-text-primary;
-    font-family: $font-main;
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-tight);
-
-    @include respond-to("tablet") {
-      font-size: var(--font-size-4xl);
-    }
-
-    &-italic {
-      font-style: italic;
-      color: $color-primary;
-    }
+    @include section-title;
   }
 
   &__description {
-    display: flex;
-    flex-direction: column;
-    gap: rem(16);
-    color: $color-text-muted;
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-base);
+    @include flex-column(rem(16));
+    @include description-text;
   }
 
   &__highlights {
@@ -70,52 +54,31 @@
   }
 
   &__card {
-    padding: rem(24);
-    border: rem(1) solid $color-border;
-    border-radius: $radius-md;
-    background-color: $color-bg-card;
-    transition:
-      border-color $transition-fast,
-      transform $transition-normal,
-      box-shadow $transition-normal;
+    @include card-base;
 
     &:hover {
-      border-color: $color-primary;
-      transform: translateY(rem(-4));
-      box-shadow: 0 rem(12) rem(30) $color-primary-glow;
+      @include interactive-card-hover;
     }
   }
 
   &__icon-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: rem(40);
-    height: rem(40);
+    @include icon-box(rem(40));
     margin-bottom: rem(16);
-    border-radius: $radius-sm;
-    background-color: color-mix(in srgb, $color-primary 10%, transparent);
   }
 
   &__icon {
-    width: rem(20);
-    height: rem(20);
+    @include icon-size(rem(20));
     color: $color-primary;
   }
 
   &__card-title {
+    @include card-title;
     margin-bottom: rem(4);
-    color: $color-text-primary;
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
   }
 
   &__card-text {
-    color: $color-text-muted;
+    @include muted-text-interactive;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-base);
   }
 }
-
-// Global/Utility Animations Note:
-// @keyframes fadeUp переносим в глобальный файл styles/base/_animations.scss

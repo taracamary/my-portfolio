@@ -1,0 +1,74 @@
+@use "../base/config" as *;
+
+// Generate animation delay classes
+// Automatically creates .component__delay-100, -200, etc.
+@mixin generate-delay-classes($class-prefix: "", $count: 6, $step: 100) {
+  @for $i from 1 through $count {
+    $delay: $i * $step;
+
+    &#{$class-prefix}delay-#{$delay} {
+      animation-delay: #{$delay}ms;
+    }
+  }
+}
+
+// Core fade-up keyframe animation
+// Used by @mixin animate-fade-up
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Floating animation — subtle up-down movement
+// Used for profile cards, badges, etc.
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, rem(-10), 0);
+  }
+}
+
+// Bounce animation — arrow or icon bounce
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, rem(4), 0);
+  }
+}
+
+// Pulse animation — radial glow pulse outward
+// Used for timeline dots or emphasis
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+// Marquee animation — horizontal scrolling text
+// Used for scrolling tech stack or similar
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}

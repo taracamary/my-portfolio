@@ -1,8 +1,9 @@
 @use "../../styles/base/config" as *;
+@use "../../styles/utilities" as *;
 
 .footer {
   inline-size: 100%;
-  padding-block: rem(32) rem(64);
+  padding-block-end: rem(64);
   background-color: $color-background;
 
   &__container {

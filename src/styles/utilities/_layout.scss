@@ -1,0 +1,52 @@
+@use "../base/config" as *;
+
+// Flex container — column direction with gap
+// Commonly used for stacking content vertically
+@mixin flex-column($gap: rem(32)) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+// Flex container — row direction with gap
+@mixin flex-row($gap: rem(16)) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+}
+
+// Flex center — both horizontally and vertically
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Responsive grid layout
+// Tablet+: configurable columns
+@mixin responsive-grid($tablet-cols: 2, $gap: rem(16)) {
+  display: grid;
+  gap: $gap;
+
+  @include respond-to("tablet") {
+    grid-template-columns: repeat($tablet-cols, minmax(0, 1fr));
+  }
+}
+
+// Container with max-width constraint
+// Ensures content doesn't get too wide
+@mixin max-width-container($max-width: rem(768)) {
+  max-inline-size: $max-width;
+  margin-inline: auto;
+}
+
+// Full-width container base
+// Used for section containers
+@mixin container-base {
+  inline-size: 100%;
+}
+
+// Center text alignment (used for headings, intro sections)
+@mixin text-center {
+  text-align: center;
+}

@@ -1,0 +1,156 @@
+@use "../base/config" as *;
+
+// Card base — padding, border, bg, transitions
+// Used for all card-like components (project cards, experience cards, etc.)
+@mixin card-base {
+  padding: rem(24);
+  border: rem(1) solid $color-border;
+  border-radius: $radius-md;
+  background-color: $color-bg-card;
+  transition:
+    border-color $transition-fast,
+    transform $transition-normal,
+    box-shadow $transition-normal;
+}
+
+// Interactive card hover effect
+// Lifts card up and adds primary-colored glow
+@mixin interactive-card-hover($offset-y: rem(-4)) {
+  border-color: $color-primary;
+  transform: translateY($offset-y);
+  box-shadow: 0 rem(12) rem(30) $color-primary-glow;
+}
+
+// Button base — flex, gap, padding, borders, transitions
+// Use for both primary and secondary buttons
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(8);
+  padding: rem(16) rem(32);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition:
+    color $transition-fast,
+    border-color $transition-fast,
+    background-color $transition-fast,
+    box-shadow $transition-fast;
+}
+
+// Primary button variant
+// Filled background with primary color
+@mixin button-primary {
+  border: rem(1) solid $color-primary;
+  background-color: $color-primary;
+  color: $color-background;
+  font-weight: var(--font-weight-bold);
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary-hover;
+    background-color: $color-primary-hover;
+    box-shadow: 0 rem(4) rem(20) $color-primary-glow;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Secondary button variant
+// Outlined button with transparent background
+@mixin button-secondary {
+  border: rem(1) solid $color-border;
+  background: transparent;
+  color: $color-text-primary;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Icon button — small, round, with border
+// Used for theme toggle, language toggle, social links
+@mixin icon-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: rem(40);
+  block-size: rem(40);
+  border: rem(1) solid $color-border;
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition:
+    color $transition-fast,
+    border-color $transition-fast,
+    background-color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary;
+    background-color: color-mix(
+      in srgb,
+      $color-primary 6%,
+      transparent
+    );
+    color: $color-primary;
+  }
+}
+
+// Link with underline hover effect
+@mixin link-underline {
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+// Animated fade-up on load
+// Combines opacity and translateY animation
+@mixin animate-fade-up($offset: rem(20)) {
+  opacity: 0;
+  animation: fadeUp 0.6s var(--ease-main) forwards;
+  transform: translateY($offset);
+}
+
+// Small tag/badge — border, rounded, text styling
+@mixin tag-base {
+  display: inline-flex;
+  padding: rem(4) rem(12);
+  border: rem(1) solid $color-border;
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, $color-text-primary 2%, transparent);
+  color: $color-text-muted;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+// Icon wrapper with background
+// Used for decorative icons in cards
+@mixin icon-box($size: rem(40), $bg-color: color-mix(in srgb, $color-primary 10%, transparent)) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  border-radius: $radius-sm;
+  background-color: $bg-color;
+}
+
+// Small icon sizing (for use inside icon-box or buttons)
+@mixin icon-size($size: rem(20)) {
+  width: $size;
+  height: $size;
+}
