@@ -2,7 +2,7 @@
 
 Personal frontend portfolio — a single-page site showcasing professional experience, projects, and technical skills
 
-**Live demo:** [https://maria-kapiturko-portfolio.vercel.app/](https://maria-kapiturko-portfolio.vercel.app/)
+**Live demo:** [https://maria-kapiturko-portfolio.vercel.app](https://maria-kapiturko-portfolio.vercel.app)
 
 ---
 
@@ -58,7 +58,6 @@ The focus is on clean structure, maintainable styling, and realistic production-
 - Theme toggle transitions with a native View Transition animation — content morphs smoothly, no flash
 - Language switch between EN and RU is instant and stateful — preference persisted in `localStorage`
 - Project cards expand inline with a CSS Grid row animation — no modal, no overlay, no scroll lock
-- Expanding a card does not affect sibling card heights — `align-items: start` on the grid isolates the layout change
 - Mobile navigation auto-closes when the viewport resizes past the desktop breakpoint via `MediaQueryList`
 - Active nav link updates on scroll without a scroll listener — driven by `IntersectionObserver` on each section
 - Scroll-reveal animations respect `prefers-reduced-motion` — utility class approach, no JS condition needed
