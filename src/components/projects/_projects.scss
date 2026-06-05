@@ -117,18 +117,6 @@
     }
   }
 
-  &__overlay-btn {
-    @include icon-button;
-    display: flex;
-    inline-size: rem(44);
-    block-size: rem(44);
-
-    svg {
-      inline-size: rem(16);
-      block-size: rem(16);
-    }
-  }
-
   &__meta {
     @include flex-column(rem(12));
     padding: rem(24);
@@ -183,7 +171,7 @@
   &__details-btn {
     @include flex-row(rem(6));
     align-items: center;
-    align-self: flex-start;
+    align-self: center;
     padding: rem(6) rem(14);
     border: rem(1) solid $color-border;
     border-radius: var(--radius-full);
@@ -260,6 +248,7 @@
 
   &__expand-links {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: rem(10);
   }
