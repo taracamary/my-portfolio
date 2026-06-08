@@ -53,12 +53,17 @@ function expandCard(card) {
   // aria-expanded сообщает вспомогательным технологиям, что блок раскрыт
   card.querySelector('.projects__details-btn')?.setAttribute('aria-expanded', 'true');
 
-  // Убираем aria-hidden, чтобы контент expand-панели стал доступен экранному считывателю
-  card.querySelector('.projects__expand')?.removeAttribute('aria-hidden');
+  // Снимаем inert: контент панели становится доступен и для фокуса, и для скринридера
+  const panel = card.querySelector('.projects__expand');
+  if (panel) panel.inert = false;
 }
 
 function collapseCard(card) {
   card.classList.remove('is-expanded');
   card.querySelector('.projects__details-btn')?.setAttribute('aria-expanded', 'false');
-  card.querySelector('.projects__expand')?.setAttribute('aria-hidden', 'true');
+
+  // inert убирает свёрнутую панель из таб-порядка и из дерева доступности —
+  // ссылки внутри больше не получают фокус, пока карточка закрыта
+  const panel = card.querySelector('.projects__expand');
+  if (panel) panel.inert = true;
 }

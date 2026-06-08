@@ -12,13 +12,6 @@
   @return math.div($px, 16px) * 1rem;
 }
 
-@function em($px) {
-  @if math.is-unitless($px) {
-    $px: $px * 1px;
-  }
-  @return math.div($px, 16px) * 1em;
-}
-
 // =========================
 // ROOT TOKENS
 // =========================
@@ -122,14 +115,12 @@ html[data-theme="light"] {
   }
 }
 
-// Если активен английский — прячем русский текст
 html[lang="en"] {
   [lang="ru"] {
     display: none !important;
   }
 }
 
-// Если активен русский — прячем английский текст
 html[lang="ru"] {
   [lang="en"] {
     display: none !important;
@@ -152,11 +143,9 @@ $color-text-muted: var(--color-text-muted);
 $color-primary: var(--color-primary);
 $color-primary-hover: var(--color-primary-hover);
 $color-primary-glow: var(--color-primary-glow);
-$color-accent: var(--color-primary);
 
 $radius-sm: var(--radius-sm);
 $radius-md: var(--radius-md);
-$radius-lg: var(--radius-lg);
 $radius-full: var(--radius-full);
 
 $ease-main: var(--ease-main);
@@ -173,6 +162,10 @@ $breakpoints: (
   "desktop": rem(1024),
   "desktop-lg": rem(1440),
 );
+
+:root {
+  --breakpoint-tablet: #{map.get($breakpoints, "tablet")};
+}
 
 @mixin respond-to($breakpoint) {
   $width: map.get($breakpoints, $breakpoint);

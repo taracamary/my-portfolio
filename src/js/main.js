@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const langToggleBtn = document.querySelector('.header__lang-toggle');
   const heroSection = document.getElementById('hero');
 
-  // Инициализация модулей в порядке от глобальных к секционным
   setupTheme(themeToggleBtn);
   setupLanguage(langToggleBtn);
   initBurgerMenu(burgerBtn, menu);

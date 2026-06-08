@@ -64,15 +64,17 @@
 .u-fade-up {
   opacity: 0;
   transform: translateY(rem(20));
-  will-change: transform, opacity;
 
   &.is-visible {
     animation: fadeUp 0.6s var(--ease-main) forwards;
   }
 }
 
+// Стаггер скоупим под .u-fade-up: специфичность (0,2,0) совпадает с
+// .u-fade-up.is-visible и идёт позже по исходнику — иначе шорткат `animation`
+// сбрасывал animation-delay в 0s и задержки не работали
 @for $i from 1 through 8 {
-  .u-delay-#{$i * 100} {
+  .u-fade-up.u-delay-#{$i * 100} {
     animation-delay: #{$i * 100}ms;
   }
 }

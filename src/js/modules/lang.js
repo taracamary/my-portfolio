@@ -27,8 +27,27 @@ export const initLanguage = () => {
   document.documentElement.setAttribute('lang', currentLang);
 };
 
+// Локализует aria-label / alt у элементов с data-*-en / data-*-ru.
+// Эти атрибуты нельзя переключать CSS-трюком со спанами, поэтому их обновляет JS
+const localizeAttributes = () => {
+  const isRu = (document.documentElement.getAttribute('lang') || DEFAULT_LANG) === 'ru';
+
+  document.querySelectorAll('[data-aria-label-en]').forEach((el) => {
+    const value = isRu ? el.dataset.ariaLabelRu : el.dataset.ariaLabelEn;
+    if (value) el.setAttribute('aria-label', value);
+  });
+
+  document.querySelectorAll('[data-alt-en]').forEach((el) => {
+    const value = isRu ? el.dataset.altRu : el.dataset.altEn;
+    if (value != null) el.setAttribute('alt', value);
+  });
+};
+
 // Навешивает обработчик клика и следит за актуальностью aria-атрибутов кнопки
 export const setupLanguage = (langBtn) => {
+  // Синхронизируем локализуемые атрибуты с текущим языком при инициализации
+  localizeAttributes();
+
   if (!langBtn) return;
 
   // Синхронизирует aria-pressed и aria-label с текущим активным языком
@@ -68,11 +87,13 @@ export const setupLanguage = (langBtn) => {
   updateToggleState();
   langBtn.addEventListener('click', handleClick);
 
-  // Обновляем собственную кнопку при внешних изменениях языка
+  // Обновляем собственную кнопку и локализуемые атрибуты при изменениях языка
   window.addEventListener('portfolio:languagechange', updateToggleState);
+  window.addEventListener('portfolio:languagechange', localizeAttributes);
 
   return () => {
     langBtn.removeEventListener('click', handleClick);
     window.removeEventListener('portfolio:languagechange', updateToggleState);
+    window.removeEventListener('portfolio:languagechange', localizeAttributes);
   };
 };

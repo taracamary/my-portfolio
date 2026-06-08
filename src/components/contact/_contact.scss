@@ -54,7 +54,6 @@
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
-    will-change: transform, box-shadow;
     transition:
       color $transition-fast,
       border-color $transition-fast,
@@ -97,7 +96,6 @@
     background-color: $color-bg-card;
     color: $color-text-muted;
     text-decoration: none;
-    will-change: transform, box-shadow;
     transition:
       border-color $transition-fast,
       color $transition-fast,

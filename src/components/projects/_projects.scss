@@ -69,7 +69,6 @@
     @include card-base;
     position: relative;
     cursor: pointer;
-    will-change: transform, border-color, box-shadow;
 
     &:hover,
     &:focus-within {

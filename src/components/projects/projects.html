@@ -34,21 +34,23 @@
 
       <div class="projects__grid">
         <!-- Manage — Task Planner -->
-        <article class="projects__card u-fade-up u-delay-100" data-title-en="Manage — Task Planner"
-          data-title-ru="Manage — Таск-планировщик"
+        <article class="projects__card u-fade-up u-delay-100"
           data-details-en="Manage is a task planner UI built as a static frontend project using Handlebars templates and a modular SCSS architecture based on BEM methodology. The layout uses a CSS multi-column masonry-style grid and responsive structure without external UI frameworks. Templates are compiled through a Webpack 4 pipeline with reusable partials and layout inheritance. All form controls are native HTML elements with custom styling. Interaction is implemented in vanilla JavaScript with minimal logic, focused on mobile usability"
           data-details-ru="Manage — UI планировщика задач, реализованный как статический фронтенд-проект на Handlebars-шаблонах и модульной SCSS архитектуре по методологии BEM. Лейаут построен на CSS masonry-сетке и адаптивной структуре без UI-фреймворков. Шаблоны собираются через Webpack 4 с переиспользуемыми partials и наследованием лейаутов. Формы — нативный HTML с кастомной стилизацией. Интерактивность реализована на чистом JavaScript с минимальной логикой, ориентированной на мобильные сценарии"
           data-github="https://github.com/taracamary/manage-site"
           data-demo="https://maria-kapiturko-manage-site.vercel.app">
           <div class="projects__image-wrapper">
-            <img src="https://raw.githubusercontent.com/taracamary/manage-site/main/assets/screenshot.jpg"
-              alt="Screenshot of Manage task planner dashboard" class="projects__image">
+            <img src="src/assets/images/projects/manage.png"
+              alt="Screenshot of Manage task planner dashboard"
+              data-alt-en="Screenshot of Manage task planner dashboard"
+              data-alt-ru="Скриншот дашборда таск-планировщика Manage" class="projects__image">
 
             <div class="projects__overlay"></div>
           </div>
 
           <div class="projects__meta">
-            <ul class="projects__tags" aria-label="Technologies used">
+            <ul class="projects__tags" aria-label="Technologies used" data-aria-label-en="Technologies used"
+              data-aria-label-ru="Используемые технологии">
               <li class="projects__tag">Handlebars</li>
               <li class="projects__tag">SCSS / BEM</li>
               <li class="projects__tag">JavaScript</li>
@@ -80,7 +82,86 @@
               </svg>
             </button>
 
-            <div class="projects__expand" aria-hidden="true">
+            <div class="projects__expand" inert>
+              <div class="projects__expand-body">
+                <p class="projects__expand-details" lang="en"></p>
+                <p class="projects__expand-details" lang="ru"></p>
+
+                <div class="projects__expand-links">
+                  <a class="projects__expand-link projects__expand-link--demo" href="#" target="_blank"
+                    rel="noreferrer noopener">
+                    <svg aria-hidden="true">
+                      <use href="sprite.svg#icon-arrow-link"></use>
+                    </svg>
+                    <span lang="en">Live Demo</span>
+                    <span lang="ru">Демо-версия</span>
+                  </a>
+
+                  <a class="projects__expand-link projects__expand-link--github" href="#" target="_blank"
+                    rel="noreferrer noopener">
+                    <svg aria-hidden="true">
+                      <use href="sprite.svg#icon-github"></use>
+                    </svg>
+                    <span lang="en">GitHub</span>
+                    <span lang="ru">Исходный код</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Knomary — Data Dashboard -->
+        <article class="projects__card u-fade-up u-delay-100"
+          data-details-en="Knomary is a single-page learning dashboard engineered as a data-driven React application with static JSON as the primary data layer. Education, news, and internal sections are rendered through a polymorphic CardBase component that adapts UI branches to different JSON schemas. A dedicated utils layer handles filtering, progress formatting, and class composition — filter metadata is precomputed to avoid redundant Array.filter calls in render. The architecture follows separation of concerns: App.js acts as a composition root, MainContent switches section trees via activePage state, and constants are decoupled from JSX. Styling is implemented with modular SCSS partials and BEM methodology — no Tailwind, MUI, or Bootstrap. The project was refactored from a monolithic structure into layered components, utilities, and style partials with layout stability fixes, accessibility improvements, and Vercel-ready deployment configuration"
+          data-details-ru="Knomary — одностраничный дашборд обучения, реализованный как data-driven React-приложение со статическим JSON в качестве основного источника данных. Разделы обучения, новостей и внутренней навигации рендерятся через полиморфный компонент CardBase, который адаптирует UI под разные JSON-схемы. Отдельный слой utils отвечает за фильтрацию, форматирование прогресса и генерацию CSS-классов — метаданные фильтров вычисляются заранее, без повторных Array.filter в render. Архитектура построена на разделении ответственности: App.js — composition root, MainContent переключает секции через activePage, константы вынесены из JSX. Стилизация — модульные SCSS partials и BEM, без Tailwind, MUI и Bootstrap. Проект рефакторен из монолита в слоистую структуру компонентов, утилит и стилей с исправлением layout shift, улучшением доступности и конфигурацией деплоя на Vercel"
+          data-github="https://github.com/taracamary/knomary-dashboard"
+          data-demo="https://knomary-dashboard.vercel.app">
+          <div class="projects__image-wrapper">
+            <img src="src/assets/images/projects/knomary.png"
+              alt="Screenshot of Knomary data dashboard interface"
+              data-alt-en="Screenshot of Knomary data dashboard interface"
+              data-alt-ru="Скриншот интерфейса дашборда Knomary" class="projects__image">
+
+            <div class="projects__overlay"></div>
+          </div>
+
+          <div class="projects__meta">
+            <ul class="projects__tags" aria-label="Technologies used" data-aria-label-en="Technologies used"
+              data-aria-label-ru="Используемые технологии">
+              <li class="projects__tag">React</li>
+              <li class="projects__tag">SCSS / BEM</li>
+              <li class="projects__tag">JavaScript</li>
+              <li class="projects__tag">CRA / Webpack</li>
+              <li class="projects__tag">JSON Data</li>
+              <li class="projects__tag">Responsive UI</li>
+            </ul>
+
+            <div class="projects__title-row">
+              <h3 class="projects__card-title">
+                <span lang="en">Knomary — Data Dashboard</span>
+                <span lang="ru">Knomary — Дашборд данных</span>
+              </h3>
+            </div>
+
+            <p class="projects__card-description" lang="en">
+              JSON-driven learning dashboard built with React and modular SCSS/BEM architecture.
+              Features dynamic data filtering, polymorphic card rendering, and responsive layout without UI frameworks
+            </p>
+            <p class="projects__card-description" lang="ru">
+              Дашборд обучения на JSON-данных, построенный на React и модульной SCSS/BEM архитектуре.
+              Динамическая фильтрация, полиморфный рендеринг карточек и адаптивный layout без UI-фреймворков
+            </p>
+
+            <button class="projects__details-btn" type="button" aria-expanded="false">
+              <span lang="en">View details</span>
+              <span lang="ru">Подробнее</span>
+              <svg aria-hidden="true">
+                <use href="sprite.svg#icon-scroll-down"></use>
+              </svg>
+            </button>
+
+            <div class="projects__expand" inert>
               <div class="projects__expand-body">
                 <p class="projects__expand-details" lang="en"></p>
                 <p class="projects__expand-details" lang="ru"></p>
@@ -110,21 +191,22 @@
         </article>
 
         <!-- AXIT — Corporate Landing Page -->
-        <article class="projects__card u-fade-up u-delay-200" data-title-en="AXIT — Corporate Landing Page"
-          data-title-ru="AXIT — Корпоративный лендинг"
+        <article class="projects__card u-fade-up u-delay-200"
           data-details-en="AXIT is a corporate landing page built with a component-based React architecture and modular SCSS using BEM methodology. The layout is implemented with responsive CSS Grid and Flexbox without utility frameworks. The project includes an interactive tab system implemented as a controlled React component following WAI-ARIA Authoring Practices. Mobile navigation is handled via a sidebar menu. Reusable form components are used across multiple sections. Accessibility is considered throughout the interface, including proper semantic structure, aria attributes, and keyboard-friendly interactions"
           data-details-ru="AXIT — корпоративный лендинг на компонентной архитектуре React с модульной SCSS по методологии BEM. Верстка реализована через адаптивные CSS Grid и Flexbox без utility-фреймворков. Проект включает интерактивные табы как контролируемый React-компонент с WAI-ARIA разметкой. Мобильная навигация реализована через sidebar-меню. Используются переиспользуемые формы в разных секциях. Доступность проработана на уровне семантической разметки, aria-атрибутов и клавиатурного взаимодействия"
           data-github="https://github.com/taracamary/axit-site"
           data-demo="https://maria-kapiturko-axit-site.vercel.app">
           <div class="projects__image-wrapper">
-            <img src="https://raw.githubusercontent.com/taracamary/axit-site/main/src/images/screenshot.jpg"
-              alt="Screenshot of AXIT corporate landing page" class="projects__image">
+            <img src="src/assets/images/projects/axit.png"
+              alt="Screenshot of AXIT corporate landing page" data-alt-en="Screenshot of AXIT corporate landing page"
+              data-alt-ru="Скриншот корпоративного лендинга AXIT" class="projects__image">
 
             <div class="projects__overlay"></div>
           </div>
 
           <div class="projects__meta">
-            <ul class="projects__tags" aria-label="Technologies used">
+            <ul class="projects__tags" aria-label="Technologies used" data-aria-label-en="Technologies used"
+              data-aria-label-ru="Используемые технологии">
               <li class="projects__tag">React 18</li>
               <li class="projects__tag">SCSS / BEM</li>
               <li class="projects__tag">CSS Grid</li>
@@ -157,7 +239,7 @@
               </svg>
             </button>
 
-            <div class="projects__expand" aria-hidden="true">
+            <div class="projects__expand" inert>
               <div class="projects__expand-body">
                 <p class="projects__expand-details" lang="en"></p>
                 <p class="projects__expand-details" lang="ru"></p>
