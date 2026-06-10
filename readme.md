@@ -91,6 +91,12 @@ The focus is on clean structure, maintainable styling, and realistic production-
 
 ---
 
+## AI Assistance
+
+AI tools were used as a supporting instrument throughout the project. All core architecture, markup, styling, and technical decisions were implemented manually. AI assisted with generating and refining parts of the JavaScript logic, improving component interactivity and UX behavior, and auditing the codebase — catching bugs, weak spots, accessibility issues, and structural inconsistencies. It was also used for targeted refactoring and optimization of individual modules. All suggestions were critically reviewed and adapted before integration. Final responsibility for all code and decisions remained with the author
+
+---
+
 ## Getting Started
 
 ```bash
