@@ -226,6 +226,11 @@
     }
   }
 
+  &__picture {
+    display: block;
+    inline-size: 100%;
+  }
+
   &__profile-img {
     display: block;
     inline-size: 100%;

@@ -93,6 +93,12 @@
     aspect-ratio: 16 / 9;
   }
 
+  &__picture {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
   &__image {
     inline-size: 100%;
     block-size: 100%;

@@ -59,9 +59,12 @@
         <div class="hero__profile-wrapper">
           <div class="hero__profile-blur" aria-hidden="true"></div>
           <div class="hero__profile-card">
-            <img src="/assets/images/profile.webp" alt="Maria — HTML & CSS Developer"
-              data-alt-en="Maria — HTML & CSS Developer" data-alt-ru="Мария — HTML & CSS разработчик"
-              class="hero__profile-img">
+            <picture class="hero__picture">
+              <source srcset="/assets/images/profile.webp" type="image/webp">
+              <img src="/assets/images/profile.png" alt="Maria — HTML & CSS Developer"
+                data-alt-en="Maria — HTML & CSS Developer" data-alt-ru="Мария — HTML & CSS разработчик"
+                class="hero__profile-img" width="640" height="1136" decoding="async" fetchpriority="high">
+            </picture>
           </div>
           <div class="hero__badge">
             <span class="hero__badge-text">

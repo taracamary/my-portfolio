@@ -20,7 +20,7 @@
   }
 
   &__copyright {
-    color: color-mix(in srgb, $color-text-muted 60%, transparent);
+    color: $color-text-muted;
     font-family: $font-main;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-regular);
