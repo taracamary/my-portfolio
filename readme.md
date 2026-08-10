@@ -1,115 +1,193 @@
-# Maria | HTML & CSS Developer Portfolio
+# Portfolio
 
-Personal HTML/CSS and frontend markup portfolio — a single-page site showcasing professional experience, projects, and UI implementation skills
+Personal frontend portfolio for Maria Kapiturko, focused on HTML, SCSS, responsive UI implementation, and lightweight vanilla JavaScript. The site is intentionally framework-free: the main work is in semantic markup, component-level styling, adaptive layouts, UI states, and interaction details
 
-**Live demo:** [https://maria-kapiturko-portfolio.vercel.app](https://maria-kapiturko-portfolio.vercel.app)
-
----
+**Live demo:** [maria-kapiturko-portfolio.vercel.app](https://maria-kapiturko-portfolio.vercel.app)
 
 ## Overview
 
-Single-page portfolio built to demonstrate practical frontend markup skills: semantic HTML, scalable SCSS architecture, modular vanilla JavaScript for UI behavior, and accessible UI patterns
+This is a static single-page portfolio built with Vite. It presents professional experience, contact links, downloadable CV files, and selected frontend/UI projects
 
-The focus is on clean structure, maintainable styling, and realistic production-level layout practices. All components follow a BEM methodology with strict naming conventions and a modular SCSS structure
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Markup | HTML5 — semantic, component partials via `vite-plugin-html-inject` |
-| Styling | SCSS — BEM methodology, modular architecture |
-| Scripting | JavaScript ES6+ — vanilla DOM API, no framework |
-| Build | Vite |
-| Tooling | ESLint · Stylelint · Prettier |
-
----
-
-## Key Features
-
-- Fully responsive layout with adaptive CSS Grid
-- Dark / light theme toggle using the View Transition API
-- EN / RU language switch
-- Mobile burger navigation with auto-close on resize
-- Scroll-based reveal animations via `IntersectionObserver`
-- Interactive hero section — mouse-tracking parallax via CSS custom properties
-- Project cards with inline expand / collapse (CSS Grid animation, no JS animation logic)
-- Centralized SVG icon sprite system
-- Open Graph and Twitter Card meta tags
-- Keyboard-accessible interactive elements throughout
-
----
-
-## What I focused on
-
-- FOUC prevention: `initTheme()` and `initLanguage()` execute before `DOMContentLoaded` so the correct theme and language are applied before the first paint
-- View Transition API for theme and language switching — no CSS class toggling or JS animation logic
-- `IntersectionObserver` for both scroll-reveal animations and active nav link tracking — no `scroll` event listeners
-- CSS Grid `grid-template-rows: 0fr → 1fr` for project card expand/collapse — animation is entirely in CSS, JS only toggles a class and aria attributes
-- Centralized SVG sprite: all icons live in a single `public/sprite.svg`, referenced via `<use href="sprite.svg#icon-*">`
-- EN/RU language switch driven by `lang` attribute on `<html>` — CSS handles visibility of `[lang="en"]` / `[lang="ru"]` spans, no DOM manipulation
-- Mouse-tracking parallax in the hero section implemented via CSS custom properties updated on `pointermove` — no JS animation loop
-
----
-
-## UI / UX Highlights
-
-- Theme toggle transitions with a native View Transition animation — content morphs smoothly, no flash
-- Language switch between EN and RU is instant and stateful — preference persisted in `localStorage`
-- Project cards expand inline with a CSS Grid row animation — no modal, no overlay, no scroll lock
-- Mobile navigation auto-closes when the viewport resizes past the desktop breakpoint via `MediaQueryList`
-- Active nav link updates on scroll without a scroll listener — driven by `IntersectionObserver` on each section
-- Scroll-reveal animations respect `prefers-reduced-motion` — utility class approach, no JS condition needed
-- Hero parallax effect is skipped on touch devices via `(pointer: fine)` media query — no interaction on mobile
-
----
+The project is structured around the type of work I usually do as an HTML/CSS and frontend markup developer: translating Figma-oriented UI into semantic HTML, maintainable SCSS, reusable BEM blocks, and responsive layouts that can be handed off for integration into larger applications
 
 ## Architecture
 
-- Each component lives in its own folder with a co-located `.scss` file — HTML partial and styles stay together
-- Global SCSS is split into focused partials: `_reset`, `_config` (tokens, mixins, functions), `_shared` (global element styles), loaded through a single `style.scss` entry point
-- Utility layer separated into focused files: `_animations`, `_layout`, `_typography`, `_components`
-- BEM naming throughout — flat specificity, no deep nesting
-- Design tokens (colors, spacing, font sizes) are centralized as CSS custom properties in `_config.scss`; pixel-to-rem conversion handled by a custom `rem()` function
-- Layout built with CSS Grid for section-level structure and Flexbox for component internals — no utility framework
-- HTML partials injected at build time via `vite-plugin-html-inject` — component markup stays co-located, `index.html` stays clean
-- Single JS entry point (`main.js`); each UI concern is an isolated module initialized explicitly after `DOMContentLoaded`
-- Theme and language modules initialize before `DOMContentLoaded` to prevent FOUC — all other modules initialize after DOM is ready
-- Build tooling: Vite
+Vite is used as the development server and build tool. HTML sections are split into component partials and injected into `index.html` with `vite-plugin-html-inject`, which keeps the page shell readable while allowing each section to live in its own folder
 
----
+The main source structure is:
+
+```text
+src/
+  components/
+    header/
+    hero/
+    about/
+    projects/
+    experience/
+    contact/
+    footer/
+  js/
+    main.js
+    modules/
+  styles/
+    base/
+    utilities/
+    style.scss
+```
+
+Each visual section has its own HTML partial and SCSS file. Shared styles are separated into base styles, utility mixins, and component styles:
+
+- `styles/base/_config.scss` contains design tokens, the `rem()` function, breakpoints, and the responsive mixin
+- `styles/base/_reset.scss` and `_shared.scss` define document-level defaults, focus behavior, reduced-motion handling, shared layout helpers, and global utilities
+- `styles/utilities/` contains reusable SCSS mixins for typography, layout, cards, buttons, tags, icons, and reveal animations
+- `styles/style.scss` is the single stylesheet entry point imported from `src/js/main.js`
+
+The boundary between layers is deliberate: HTML owns structure and content, SCSS owns layout and visual states, and JavaScript is limited to interaction state
+
+## Styling
+
+The styling is written in SCSS with BEM naming. Component selectors stay local to their section, while shared patterns are extracted only where they are reused across the page: cards, buttons, icon buttons, tags, section shells, typography, and responsive grids
+
+Design tokens are exposed as CSS custom properties on `:root`, including colors, typography, radius values, z-index layers, easing, and transition timing. Light theme values override the semantic color tokens through `html[data-theme="light"]`, so components consume the same variables in both themes
+
+SCSS aliases are used as proxies for CSS custom properties inside component files. This keeps component code concise while still allowing runtime theme changes through custom properties. Sizing is normalized through a small `rem()` function, and layout code uses logical properties such as `inline-size`, `block-size`, `margin-inline`, `padding-block`, and `inset-inline` where appropriate
+
+BEM is used to keep specificity predictable. Nesting is mostly limited to block elements, modifiers, and local interaction states such as hover, focus, expanded cards, and theme-specific icons
+
+## Responsive Design
+
+The layout is mobile-first. Breakpoints are defined in a shared SCSS map:
+
+- `mobile-lg`: `480px`
+- `tablet`: `768px`
+- `desktop`: `1024px`
+
+The same breakpoint source is also exposed as `--breakpoint-tablet` so JavaScript can keep the mobile menu behavior aligned with the SCSS breakpoint
+
+Responsive behavior is handled through CSS Grid and Flexbox:
+
+- The header starts as a compact mobile layout with a full-height menu and becomes a three-column grid on tablet screens
+- The hero uses a single-column layout by default and switches to a two-column grid on desktop
+- About and project sections use responsive grids with content-driven widths and max-width containers
+- Project previews keep a stable `16 / 9` aspect ratio, while the profile image uses `4 / 5` with `object-fit: cover`
+- Typography uses a mix of fixed `rem` sizes and `clamp()` for larger heading scales
+
+The mobile navigation is also responsive in behavior, not only layout. It locks body scrolling while open, closes when a menu link is selected, and resets automatically when the viewport crosses the tablet breakpoint
 
 ## Accessibility
 
-- Semantic HTML structure (`header`, `main`, `section`, `article`, `footer`)
-- Proper heading hierarchy (H1 → H2 → H3)
-- `aria-expanded`, `aria-hidden`, `aria-label` on interactive elements
-- Keyboard-accessible navigation and controls
-- Focus states on all interactive elements
-- `prefers-reduced-motion` respected via CSS
+The page uses semantic landmarks and sectioning: `header`, `nav`, `main`, `section`, `article`, and `footer`. `main` has a skip target, and a visible-on-focus skip link is available before the header
 
----
+Interactive controls use native elements where possible. Navigation items and external resources are links, while theme, language, menu, and project expansion controls are buttons. The implementation includes:
 
-## AI Assistance
+- `aria-label` on navigation, icon-only controls, and localized controls
+- `aria-expanded` on the burger menu and project details buttons
+- `aria-current="page"` on the active navigation link
+- `aria-hidden="true"` on decorative SVGs and visual dividers
+- `role="group"` on grouped technology tags in the experience section
+- `inert` on hidden mobile menu content and collapsed project detail panels
+- Focus-visible outlines defined globally and refined where needed
+- Escape handling and Tab focus trapping for the open mobile menu
+- `prefers-reduced-motion: reduce` handling that shortens transitions and animations
 
-AI tools were used as a supporting instrument throughout the project. All core architecture, markup, styling, and technical decisions were implemented manually. AI assisted with generating and refining parts of the JavaScript logic, improving component interactivity and UX behavior, and auditing the codebase — catching bugs, weak spots, accessibility issues, and structural inconsistencies. It was also used for targeted refactoring and optimization of individual modules. All suggestions were critically reviewed and adapted before integration. Final responsibility for all code and decisions remained with the author
+The language switch also updates localized `aria-label` and `alt` attributes, because those cannot be handled by CSS-only language visibility
 
----
+## JavaScript & Interactions
+
+JavaScript is intentionally lightweight and split into small modules under `src/js/modules/`. The entry point initializes theme and language early, then wires UI modules after `DOMContentLoaded`
+
+Current modules handle:
+
+- Theme initialization and switching, with `localStorage` persistence and optional View Transition API support
+- English/Russian language switching, including `lang` state, localized ARIA/alt attributes, and saved preference
+- Mobile menu state, scroll locking, `inert`, Escape handling, focus management, and breakpoint sync
+- Header scroll state and active navigation link updates through `IntersectionObserver`
+- Scroll reveal animations using `IntersectionObserver`, with a no-observer fallback that shows content
+- Hero pointer effects using CSS custom properties and `requestAnimationFrame`, only on fine-pointer devices
+- Project card expansion, including `aria-expanded`, `inert`, optional links, and CSS-driven expand/collapse animation
+- Project image fallback placeholders if an image fails to load
+
+Animations and presentation stay in CSS where possible. For example, project details expand through a grid row transition, while JavaScript only changes state classes and accessibility attributes
+
+## Internationalization
+
+The portfolio supports English and Russian without an i18n framework. Both language variants are present in the HTML using `lang="en"` and `lang="ru"` spans or blocks
+
+Visibility is controlled by the `lang` attribute on the root `html` element:
+
+```scss
+html[lang="en"] [lang="ru"] {
+  display: none !important;
+}
+
+html[lang="ru"] [lang="en"] {
+  display: none !important;
+}
+```
+
+JavaScript is responsible for choosing the initial language, persisting the preference in `localStorage`, updating the root `lang` attribute, and localizing attributes such as `aria-label` and image `alt` text
+
+## Performance & UX Details
+
+The implementation favors CSS-first behavior and a small JavaScript surface. Theme and language are initialized in an inline head script before the module bundle runs, reducing the chance of a wrong-theme or wrong-language flash on first paint
+
+Other source-level details include:
+
+- Vite handles local development and production bundling
+- Theme and language changes use the View Transition API when available, with a direct state update fallback
+- Hero pointer effects are disabled on non-fine-pointer devices
+- Pointer-driven hero updates are batched with `requestAnimationFrame`
+- Scroll reveal and active-section detection use `IntersectionObserver`
+- SVG icons are referenced from a shared sprite with `<use>`
+- Motion is reduced through a global `prefers-reduced-motion` media query
+
+No performance scores or browser support guarantees are claimed here because they are not measured in the repository
+
+## Tooling
+
+The project uses a small frontend tooling stack:
+
+- Vite
+- Sass/SCSS through `sass-embedded`
+- `vite-plugin-html-inject` for HTML partial injection
+- ESLint for JavaScript
+- Stylelint with SCSS support for styles
+- Prettier for formatting SCSS in the fix script
+
+## AI-assisted Development
+
+AI-assisted development was used as a supporting tool during parts of the workflow. It helped with code exploration, documentation drafting, refactoring suggestions, identifying inconsistencies, and reviewing implementation options
+
+The architecture, code review, validation, editing, and final implementation decisions remained human-controlled. AI was treated as an assistant for analysis and repetitive work, not as an autonomous author of the project
+
+## Selected Projects
+
+The portfolio includes a small set of selected frontend/UI projects. The links below are taken from the project card source:
+
+- **ATT Landing**: [demo](https://att-landing-gray.vercel.app), [repository](https://github.com/taracamary/att-landing)
+- **Managed Site**: [demo](https://maria-kapiturko-manage-site.vercel.app), [repository](https://github.com/taracamary/manage-site)
+- **Knomary Dashboard**: [demo](https://knomary-dashboard.vercel.app), [repository](https://github.com/taracamary/knomary-dashboard)
+
+These examples are included as portfolio content. This README focuses on the implementation of the portfolio site itself
 
 ## Getting Started
 
 ```bash
-git clone https://github.com/taracamary/my-portfolio.git
-cd my-portfolio
 npm install
-npm run dev       # dev server → http://127.0.0.1:5173
+npm run dev
 ```
----
 
-## Contact
+The Vite dev server is configured to run on `127.0.0.1:5173` and open the browser automatically
 
-- **Developer:** Maria Kapiturko — HTML & CSS / Frontend Markup Developer
-- **Location:** Minsk, Belarus (Available for global remote cooperation)
-- **LinkedIn:** [Connect on LinkedIn](https://www.linkedin.com/in/taracamary)
-- **GitHub:** [Follow on GitHub](https://github.com/taracamary)
+## Scripts
+
+```bash
+npm run start       # alias for npm run dev
+npm run dev         # start the Vite dev server
+npm run build       # create a production build
+npm run preview     # preview the production build locally
+npm run lint:js     # lint JavaScript files in src/
+npm run lint:style  # lint SCSS files in src/
+npm run lint        # run JavaScript and style linting
+npm run lint:fix    # run ESLint, Stylelint, and Prettier fixes
+```
