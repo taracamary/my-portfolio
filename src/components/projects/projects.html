@@ -35,8 +35,10 @@
       <div class="projects__grid">
         <!-- ATT Landing -->
         <article class="projects__card u-fade-up u-delay-100"
-          data-details-en="ATT Landing is a recent frontend UI project focused on accurate implementation of a provided Figma design. The case highlights responsive and adaptive layout work, precise spacing, typography, UI states, breakpoint behavior, and clean HTML/CSS/SCSS structure"
-          data-details-ru="ATT Landing — недавний frontend/UI-проект с фокусом на точную реализацию предоставленного Figma-макета. Кейс показывает адаптивную верстку, точные отступы, типографику, состояния UI, поведение на брейкпоинтах и аккуратную HTML/CSS/SCSS-структуру">
+          data-details-en="One-page landing for the excursion “Millennium Brest and the Brest Fortress”. The interface covers the program, date search, schedule cards with booking, reviews, and contacts in one scroll flow from a full-bleed hero to the footer. Built from Figma for desktop and mobile with tablet support, semantic HTML, SCSS design tokens and BEM, and a Vite pipeline with HTML partials. Vanilla JavaScript handles the burger menu, dropdowns, calendar, reviews slider, language, and currency switching; Air Datepicker is used for the date fields. Accessibility includes semantic structure, focus-visible states, and ARIA for custom controls and the carousel"
+          data-details-ru="Одностраничный лендинг экскурсии “Millennium Brest and the Brest Fortress”. Интерфейс объединяет программу, поиск по датам, карточки расписания с бронированием, отзывы и контакты в одном сценарии — от full-bleed hero до футера. Реализован по Figma для desktop и mobile с поддержкой tablet: семантичный HTML, SCSS design tokens и BEM, сборка на Vite с HTML partials. Vanilla JavaScript отвечает за burger-меню, dropdowns, календарь, слайдер отзывов, язык и валюту; для полей даты используется Air Datepicker. Accessibility: семантическая структура, focus-visible и ARIA для кастомных контролов и карусели"
+          data-github="https://github.com/taracamary/att-landing"
+          data-demo="https://att-landing-gray.vercel.app">
           <div class="projects__image-wrapper">
             <div class="projects__placeholder" role="img" aria-label="ATT Landing preview not available"
               data-aria-label-en="ATT Landing preview not available"
@@ -67,12 +69,12 @@
             </div>
 
             <p class="projects__card-description" lang="en">
-              Recent frontend UI project focused on accurate Figma implementation, responsive behavior, clean component
-              structure, and production-ready HTML/CSS/SCSS
+              One-page excursion landing from Figma: semantic HTML, SCSS/BEM, and a responsive UI with search, schedule,
+              and reviews
             </p>
             <p class="projects__card-description" lang="ru">
-              Недавний frontend/UI-проект с фокусом на точную реализацию Figma-макета, адаптивность, чистую структуру
-              компонентов и production-ready HTML/CSS/SCSS
+              Одностраничный лендинг экскурсии по Figma: семантичный HTML, SCSS/BEM и адаптивный UI с поиском,
+              расписанием и отзывами
             </p>
 
             <div class="projects__expand" inert>
@@ -81,7 +83,8 @@
                 <p class="projects__expand-details" lang="ru"></p>
 
                 <div class="projects__expand-links">
-                  <a class="projects__expand-link projects__expand-link--demo" target="_blank"
+                  <a class="projects__expand-link projects__expand-link--demo"
+                    href="https://att-landing-gray.vercel.app" target="_blank"
                     rel="noreferrer noopener">
                     <svg aria-hidden="true">
                       <use href="sprite.svg#icon-arrow-link"></use>
@@ -90,7 +93,8 @@
                     <span lang="ru">Демо-версия</span>
                   </a>
 
-                  <a class="projects__expand-link projects__expand-link--github" target="_blank"
+                  <a class="projects__expand-link projects__expand-link--github"
+                    href="https://github.com/taracamary/att-landing" target="_blank"
                     rel="noreferrer noopener">
                     <svg aria-hidden="true">
                       <use href="sprite.svg#icon-github"></use>
@@ -114,8 +118,8 @@
 
         <!-- Managed Site -->
         <article class="projects__card u-fade-up u-delay-200"
-          data-details-en="Managed Site is a static task-planner interface built with Handlebars templates and modular SCSS/BEM. The project is focused on responsive markup, reusable partials, a masonry-style content layout, native form controls with custom styling, and a structure prepared for frontend integration. Vanilla JavaScript is used only for lightweight UI behavior"
-          data-details-ru="Managed Site — статический интерфейс таск-планировщика на Handlebars-шаблонах и модульной SCSS/BEM-архитектуре. Проект сфокусирован на адаптивной верстке, переиспользуемых partials, masonry-лейауте, нативных формах с кастомной стилизацией и структуре, подготовленной для frontend-интеграции. Vanilla JavaScript используется только для легкого UI-поведения"
+          data-details-en="Static single-page task planner dashboard built to show semantic markup, modular SCSS, and a component-based structure without UI frameworks. Each UI block keeps its Handlebars template and SCSS together; layouts use inheritance to avoid duplicated markup. The content area is a CSS multi-column masonry card grid, while the header, footer, and filters use Flexbox. Native form controls — checkboxes, a Major/Minor switcher, select, and search — are custom-styled in CSS. A custom Webpack 4 pipeline compiles templates, styles, scripts, images, and fonts. Vanilla JavaScript is limited to lightweight UI behavior such as the mobile social dropdown"
+          data-details-ru="Статический одностраничный dashboard таск-планировщика: семантичная верстка, модульный SCSS и компонентная структура без UI-фреймворков. Каждый UI-блок хранит Handlebars-шаблон и SCSS рядом; лейауты используют наследование, чтобы не дублировать разметку. Контент — CSS multi-column masonry-сетка карточек, header, footer и фильтры — на Flexbox. Нативные формы (чекбоксы, переключатель Major/Minor, select, поиск) стилизованы через CSS. Сборка — кастомный Webpack 4 для шаблонов, стилей, скриптов, изображений и шрифтов. Vanilla JavaScript ограничен легким UI-поведением, например мобильным dropdown социальных ссылок"
           data-github="https://github.com/taracamary/manage-site"
           data-demo="https://maria-kapiturko-manage-site.vercel.app">
           <div class="projects__image-wrapper">
@@ -146,12 +150,10 @@
             </div>
 
             <p class="projects__card-description" lang="en">
-              Static planner interface with responsive Handlebars templates, reusable SCSS/BEM blocks, native controls,
-              and lightweight UI interactivity
+              Responsive task planner UI with Handlebars components, modular SCSS/BEM, and a CSS masonry card grid
             </p>
             <p class="projects__card-description" lang="ru">
-              Статический интерфейс планировщика с адаптивными Handlebars-шаблонами, переиспользуемыми SCSS/BEM-блоками,
-              нативными контролами и легкой UI-интерактивностью
+              Адаптивный UI таск-планировщика на Handlebars-компонентах, модульном SCSS/BEM и CSS masonry-сетке карточек
             </p>
 
             <div class="projects__expand" inert>
@@ -160,7 +162,8 @@
                 <p class="projects__expand-details" lang="ru"></p>
 
                 <div class="projects__expand-links">
-                  <a class="projects__expand-link projects__expand-link--demo" target="_blank"
+                  <a class="projects__expand-link projects__expand-link--demo"
+                    href="https://maria-kapiturko-manage-site.vercel.app" target="_blank"
                     rel="noreferrer noopener">
                     <svg aria-hidden="true">
                       <use href="sprite.svg#icon-arrow-link"></use>
@@ -169,7 +172,8 @@
                     <span lang="ru">Демо-версия</span>
                   </a>
 
-                  <a class="projects__expand-link projects__expand-link--github" target="_blank"
+                  <a class="projects__expand-link projects__expand-link--github"
+                    href="https://github.com/taracamary/manage-site" target="_blank"
                     rel="noreferrer noopener">
                     <svg aria-hidden="true">
                       <use href="sprite.svg#icon-github"></use>
@@ -193,8 +197,8 @@
 
         <!-- Knomary Dashboard -->
         <article class="projects__card u-fade-up u-delay-300"
-          data-details-en="Knomary Dashboard is a single-page dashboard interface built with React, static JSON data, reusable card components, and modular SCSS/BEM styling. The project highlights complex UI implementation: card grids, navigation sections, visual hierarchy, responsive behavior, layout stability, and consistent styling without Tailwind, MUI, or Bootstrap"
-          data-details-ru="Knomary Dashboard — одностраничный dashboard-интерфейс на React со статическими JSON-данными, переиспользуемыми карточками и модульной SCSS/BEM-стилизацией. Проект показывает реализацию сложного UI: сетки карточек, навигационные секции, визуальную иерархию, адаптивное поведение, стабильность лейаута и единые стили без Tailwind, MUI или Bootstrap"
+          data-details-en="Single-page learning dashboard driven by static JSON for assigned education, a news feed, and internal sections. React components render different card schemas through a reusable CardBase, with education filters and counters prepared in a utils layer. Navigation switches six sections via local state instead of a routing library, keeping layout stable across pages. Styling uses modular SCSS partials and BEM without Tailwind, MUI, or Bootstrap. The UI is responsive from mobile to desktop and includes a burger menu, keyboard support, and ARIA attributes for interactive controls"
+          data-details-ru="Одностраничный дашборд обучения на статических JSON-данных: назначенное обучение, лента новостей и внутренние разделы. React-компоненты рендерят разные схемы карточек через переиспользуемый CardBase, а фильтры и счетчики обучения готовятся в слое utils. Навигация переключает шесть секций через локальный state без роутера, сохраняя стабильность лейаута. Стили — модульные SCSS partials и BEM без Tailwind, MUI и Bootstrap. UI адаптивен от mobile до desktop и включает burger-меню, поддержку клавиатуры и ARIA для интерактивных элементов"
           data-github="https://github.com/taracamary/knomary-dashboard"
           data-demo="https://knomary-dashboard.vercel.app">
           <div class="projects__image-wrapper">
@@ -225,12 +229,10 @@
             </div>
 
             <p class="projects__card-description" lang="en">
-              Dashboard interface focused on card-based layout, reusable components, responsive behavior, and consistent
-              SCSS/BEM styling
+              JSON-driven learning dashboard with reusable cards, filtering, and modular SCSS/BEM layout
             </p>
             <p class="projects__card-description" lang="ru">
-              Интерфейс дашборда с акцентом на карточный layout, переиспользуемые компоненты, адаптивное поведение и
-              согласованную SCSS/BEM-стилизацию
+              Дашборд обучения на JSON-данных: переиспользуемые карточки, фильтрация и модульный SCSS/BEM-лейаут
             </p>
 
             <div class="projects__expand" inert>
@@ -239,7 +241,8 @@
                 <p class="projects__expand-details" lang="ru"></p>
 
                 <div class="projects__expand-links">
-                  <a class="projects__expand-link projects__expand-link--demo" target="_blank"
+                  <a class="projects__expand-link projects__expand-link--demo"
+                    href="https://knomary-dashboard.vercel.app" target="_blank"
                     rel="noreferrer noopener">
                     <svg aria-hidden="true">
                       <use href="sprite.svg#icon-arrow-link"></use>
@@ -248,7 +251,8 @@
                     <span lang="ru">Демо-версия</span>
                   </a>
 
-                  <a class="projects__expand-link projects__expand-link--github" target="_blank"
+                  <a class="projects__expand-link projects__expand-link--github"
+                    href="https://github.com/taracamary/knomary-dashboard" target="_blank"
                     rel="noreferrer noopener">
                     <svg aria-hidden="true">
                       <use href="sprite.svg#icon-github"></use>
