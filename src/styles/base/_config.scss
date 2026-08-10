@@ -19,7 +19,7 @@
 :root {
   // --- Typography ---
   --font-family-main:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
     Arial, sans-serif;
 
   // Static sizes (for components where predictability is key)
@@ -30,7 +30,6 @@
 
   // Fluid typography (scales seamlessly between mobile 320px and desktop 1440px)
   --font-size-xl: clamp(#{rem(20)}, 1.5vw + #{rem(16)}, #{rem(24)});
-  --font-size-2xl: clamp(#{rem(24)}, 2vw + #{rem(18)}, #{rem(32)});
   --font-size-3xl: clamp(#{rem(32)}, 4vw + #{rem(20)}, #{rem(48)});
   --font-size-4xl: clamp(#{rem(40)}, 5vw + #{rem(24)}, #{rem(60)});
 
@@ -44,8 +43,6 @@
   // --- Z-Index (Strict Layering) ---
   --z-base: 0;
   --z-header: 100;
-  --z-dropdown: 200;
-  --z-modal: 1000;
   --z-toast: 2000;
 
   // --- Motion ---
@@ -81,7 +78,6 @@
   // --- Radius ---
   --radius-sm: #{rem(8)};
   --radius-md: #{rem(12)};
-  --radius-lg: #{rem(20)};
   --radius-xl: #{rem(24)};
   --radius-full: 9999px;
 }
@@ -160,7 +156,6 @@ $breakpoints: (
   "mobile-lg": rem(480),
   "tablet": rem(768),
   "desktop": rem(1024),
-  "desktop-lg": rem(1440),
 );
 
 :root {

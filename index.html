@@ -27,10 +27,14 @@
 
   <script>
     (function () {
+      const root = document.documentElement;
+
       const savedTheme = localStorage.getItem('theme');
       const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      const currentTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
-      document.documentElement.setAttribute('data-theme', currentTheme);
+      root.setAttribute('data-theme', savedTheme || (systemPrefersLight ? 'light' : 'dark'));
+
+      const savedLang = localStorage.getItem('lang');
+      root.setAttribute('lang', savedLang === 'ru' ? 'ru' : 'en');
     })();
   </script>
 </head>

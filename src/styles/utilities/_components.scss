@@ -123,14 +123,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: $size;
-  height: $size;
+  inline-size: $size;
+  block-size: $size;
   border-radius: $radius-sm;
   background-color: $bg-color;
 }
 
 // Small icon sizing (for use inside icon-box or buttons)
 @mixin icon-size($size: rem(20)) {
-  width: $size;
-  height: $size;
+  inline-size: $size;
+  block-size: $size;
 }
