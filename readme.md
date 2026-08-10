@@ -1,6 +1,6 @@
-# Maria | Frontend Developer Portfolio
+# Maria | HTML & CSS Developer Portfolio
 
-Personal frontend portfolio — a single-page site showcasing professional experience, projects, and technical skills
+Personal HTML/CSS and frontend markup portfolio — a single-page site showcasing professional experience, projects, and UI implementation skills
 
 **Live demo:** [https://maria-kapiturko-portfolio.vercel.app](https://maria-kapiturko-portfolio.vercel.app)
 
@@ -8,7 +8,7 @@ Personal frontend portfolio — a single-page site showcasing professional exper
 
 ## Overview
 
-Single-page portfolio built to demonstrate practical frontend skills: semantic markup, scalable SCSS architecture, modular vanilla JavaScript, and accessible UI patterns
+Single-page portfolio built to demonstrate practical frontend markup skills: semantic HTML, scalable SCSS architecture, modular vanilla JavaScript for UI behavior, and accessible UI patterns
 
 The focus is on clean structure, maintainable styling, and realistic production-level layout practices. All components follow a BEM methodology with strict naming conventions and a modular SCSS structure
 
@@ -109,7 +109,7 @@ npm run dev       # dev server → http://127.0.0.1:5173
 
 ## Contact
 
-- **Developer:** Maria Kapiturko — Frontend & HTML Developer
+- **Developer:** Maria Kapiturko — HTML & CSS / Frontend Markup Developer
 - **Location:** Minsk, Belarus (Available for global remote cooperation)
 - **LinkedIn:** [Connect on LinkedIn](https://www.linkedin.com/in/taracamary)
 - **GitHub:** [Follow on GitHub](https://github.com/taracamary)

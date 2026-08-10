@@ -95,6 +95,22 @@
     }
   }
 
+  &__placeholder {
+    display: grid;
+    place-items: center;
+    inline-size: 100%;
+    block-size: 100%;
+    background:
+      radial-gradient(circle at 20% 20%, $color-primary-glow, transparent 32%),
+      linear-gradient(135deg, $color-bg-card, $color-background);
+    color: $color-text-primary;
+    font-family: $font-main;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
   &__overlay {
     position: absolute;
     inset: 0;
