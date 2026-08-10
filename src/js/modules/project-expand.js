@@ -29,8 +29,8 @@ export function initProjectExpand() {
 
     if (elEn) elEn.textContent = detailsEn ?? '';
     if (elRu) elRu.textContent = detailsRu ?? '';
-    if (demoLink) demoLink.href = demo ?? '#';
-    if (githubLink) githubLink.href = github ?? '#';
+    setOptionalProjectLink(demoLink, demo);
+    setOptionalProjectLink(githubLink, github);
 
     card.addEventListener('click', (e) => {
       // Не перехватываем клики по ссылкам внутри карточки — они открывают GitHub/Demo
@@ -66,4 +66,17 @@ function collapseCard(card) {
   // ссылки внутри больше не получают фокус, пока карточка закрыта
   const panel = card.querySelector('.projects__expand');
   if (panel) panel.inert = true;
+}
+
+function setOptionalProjectLink(link, url) {
+  if (!link) return;
+
+  if (url) {
+    link.href = url;
+    link.hidden = false;
+    return;
+  }
+
+  link.removeAttribute('href');
+  link.hidden = true;
 }
